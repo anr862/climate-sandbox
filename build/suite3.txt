@@ -1,0 +1,91 @@
+﻿=== Earth calibration (60 yr spin-up) ===
+Earth 420ppm                     Tann=288.15K  Tinst=290.39K  eq=298.9  45N/S=283.7/291.9  pole=259.8  alb=0.265  tau=0.6169  ice=5.7%  rain=78.4  sea=-0.22m  bio=0.295
+Earth 280ppm                     Tann=286.68K  Tinst=288.91K  eq=297.3  45N/S=282.4/290.4  pole=258.0  alb=0.271  tau=0.6224  ice=6.6%  rain=73.0  sea=-0.24m  bio=0.284
+Earth 840ppm (2xCO2)             Tann=290.87K  Tinst=293.11K  eq=301.6  45N/S=286.1/294.3  pole=263.2  alb=0.253  tau=0.6074  ice=4.3%  rain=88.8  sea=-0.18m  bio=0.318
+Earth, H2O feedback off          Tann=288.06K  Tinst=290.30K  eq=298.8  45N/S=283.7/291.8  pole=259.7  alb=0.265  tau=0.6169  ice=5.7%  rain=78.1  sea=-0.23m  bio=0.295
+Earth, transport x2              Tann=288.33K  Tinst=290.57K  eq=298.9  45N/S=283.7/292.4  pole=260.4  alb=0.263  tau=0.6169  ice=5.4%  rain=78.9  sea=-0.22m  bio=0.296
+Earth, transport x0.3            Tann=287.31K  Tinst=289.50K  eq=298.5  45N/S=284.0/289.4  pole=257.0  alb=0.272  tau=0.6169  ice=6.9%  rain=76.2  sea=-0.23m  bio=0.294
+Earth, tilt 0                    Tann=290.43K  Tinst=291.48K  eq=299.4  45N/S=288.1/289.6  pole=257.0  alb=0.261  tau=0.6169  ice=2.2%  rain=80.5  sea=-0.15m  bio=0.310
+Earth, tilt 60                   Tann=288.72K  Tinst=292.68K  eq=295.8  45N/S=276.5/300.9  pole=291.4  alb=0.240  tau=0.6169  ice=3.9%  rain=86.3  sea=0.00m  bio=0.287
+
+=== Presets (40 yr) ===
+地球 · Earth (2024)                Tann=288.22K  Tinst=290.45K  eq=298.9  45N/S=283.8/291.9  pole=259.9  alb=0.264  tau=0.6169  ice=5.7%  rain=78.6  sea=-0.22m  bio=0.296
+前工业地球 · 1750                     Tann=287.14K  Tinst=288.77K  eq=297.7  45N/S=281.0/291.2  pole=258.7  alb=0.267  tau=0.6228  ice=6.5%  rain=71.5  sea=-0.18m  bio=0.279
+地球 · CO₂ 加倍 (840 ppm)            Tann=289.61K  Tinst=290.23K  eq=301.8  45N/S=280.9/291.2  pole=265.2  alb=0.264  tau=0.6074  ice=4.2%  rain=79.5  sea=-0.13m  bio=0.267
+雪球地球 · Snowball                  Tann=220.13K  Tinst=221.34K  eq=230.6  45N/S=216.5/216.7  pole=209.9  alb=0.631  tau=0.6380  ice=80.7%  rain=1.1  sea=-0.86m  bio=0.026
+温室地球 · Hothouse                  Tann=303.99K  Tinst=305.52K  eq=314.6  45N/S=298.7/304.7  pole=277.8  alb=0.241  tau=0.5857  ice=0.6%  rain=157.5  sea=0.00m  bio=0.253
+火星 · Mars-like                   Tann=170.95K  Tinst=178.40K  eq=188.3  45N/S=167.1/182.1  pole=147.0  alb=0.702  tau=0.6486  ice=24.5%  rain=1.1  sea=-2.31m  bio=0.000
+金星 · Venus-like                  Tann=381.57K  Tinst=381.81K  eq=386.0  45N/S=379.9/381.2  pole=362.5  alb=0.304  tau=0.4751  ice=0.0%  rain=75.6  sea=0.00m  bio=0.000
+泰坦型 · Titan-like                 Tann=70.12K  Tinst=70.12K  eq=70.7  45N/S=70.0/70.0  pole=70.0  alb=0.838  tau=0.6531  ice=28.8%  rain=1.1  sea=-1.93m  bio=0.002
+干旱超级大陆 · Arid Supercontinent     Tann=297.49K  Tinst=299.68K  eq=308.4  45N/S=289.6/304.8  pole=263.5  alb=0.205  tau=0.6099  ice=0.9%  rain=42.2  sea=0.00m  bio=0.589
+群岛世界 · Archipelago               Tann=290.69K  Tinst=291.97K  eq=301.4  45N/S=285.0/291.6  pole=262.1  alb=0.238  tau=0.6169  ice=4.9%  rain=84.1  sea=-0.09m  bio=0.151
+潮汐锁定 · Eyeball                   Tann=199.66K  Tinst=200.11K  eq=205.9  45N/S=196.2/198.7  pole=182.4  alb=0.688  tau=0.5994  ice=72.7%  rain=1.1  sea=-1.35m  bio=0.022
+冰卫星 · Ice Moon                   Tann=95.84K  Tinst=95.85K  eq=116.5  45N/S=76.3/81.0  pole=85.3  alb=0.705  tau=0.7214  ice=100.0%  rain=1.1  sea=-0.00m  bio=0.035
+高重力海洋行星 · Alto                   Tann=306.25K  Tinst=306.85K  eq=313.8  45N/S=300.2/308.5  pole=287.7  alb=0.255  tau=0.5892  ice=0.0%  rain=238.8  sea=0.00m  bio=0.096
+
+=== Seasonal cycle, Earth (year 10) ===
+  month  1: N60=269.4K  S60=282.3K  eq=297.0K  global=290.69K
+  month  2: N60=265.5K  S60=287.9K  eq=295.4K  global=290.12K
+  month  3: N60=264.1K  S60=288.8K  eq=294.8K  global=289.38K
+  month  4: N60=265.4K  S60=285.6K  eq=295.1K  global=288.64K
+  month  5: N60=269.9K  S60=279.8K  eq=295.4K  global=287.92K
+  month  6: N60=276.3K  S60=272.3K  eq=295.4K  global=287.16K
+  month  7: N60=283.4K  S60=263.6K  eq=295.3K  global=286.40K
+  month  8: N60=289.7K  S60=254.6K  eq=295.8K  global=286.15K
+  month  9: N60=292.5K  S60=250.7K  eq=297.2K  global=287.02K
+  month 10: N60=289.4K  S60=251.8K  eq=299.3K  global=288.50K
+  month 11: N60=282.6K  S60=259.9K  eq=300.4K  global=289.94K
+  month 12: N60=275.4K  S60=272.4K  eq=299.0K  global=290.78K
+
+=== Long-run stability & speed ===
+Snowball @180yr                  Tann=220.13K  Tinst=221.34K  eq=230.6  45N/S=216.5/216.7  pole=209.9  alb=0.631  tau=0.6380  ice=80.9%  rain=1.1  sea=-0.88m  bio=0.026
+  59 sim-months/s
+Hothouse @120yr                  Tann=304.00K  Tinst=305.53K  eq=314.6  45N/S=298.7/304.7  pole=277.8  alb=0.241  tau=0.5857  ice=0.6%  rain=157.5  sea=0.00m  bio=0.253
+
+=== Extreme worlds ===
+Mars                             Tann=170.95K  Tinst=178.40K  eq=188.3  45N/S=167.1/182.1  pole=147.0  alb=0.702  tau=0.6486  ice=24.5%  rain=1.1  sea=-2.31m  bio=0.000
+Venus                            Tann=381.57K  Tinst=381.81K  eq=386.0  45N/S=379.9/381.2  pole=362.5  alb=0.304  tau=0.4751  ice=0.0%  rain=75.6  sea=0.00m  bio=0.000
+Ice moon                         Tann=95.84K  Tinst=95.85K  eq=116.5  45N/S=76.3/81.0  pole=85.3  alb=0.705  tau=0.7214  ice=100.0%  rain=1.1  sea=-0.00m  bio=0.035
+Eyeball                          Tann=199.66K  Tinst=200.11K  eq=205.9  45N/S=196.2/198.7  pole=182.4  alb=0.688  tau=0.5994  ice=72.7%  rain=1.1  sea=-1.35m  bio=0.022
+
+=== Layer sanity (Earth) ===
+  temperature    min=-30.000 max=40.000 finite=64800/64800
+  precipitation  min=0.000 max=500.000 finite=64800/64800
+  oxygen         min=0.000 max=40.000 finite=64800/64800
+  humidity       min=0.000 max=100.000 finite=64800/64800
+  vegetation     min=0.000 max=100.000 finite=64800/64800
+  habitability   min=0.000 max=1.000 finite=64800/64800
+  toxicity       min=0.000 max=1.000 finite=64800/64800
+  aerosol        min=0.000 max=1.000 finite=64800/64800
+  cloud          min=0.000 max=100.000 finite=64800/64800
+  diurnal        min=0.000 max=50.000 finite=64800/64800
+  seasonal       min=0.000 max=100.000 finite=64800/64800
+  precipSeason   min=0.000 max=1500.000 finite=64800/64800
+  rivers         min=0.000 max=1.000 finite=64800/64800
+  seaIce         min=0.000 max=100.000 finite=64800/64800
+  windSpeed      min=0.000 max=50.000 finite=64800/64800
+  currentSpeed   min=0.000 max=2.500 finite=64800/64800
+  anomaly        min=-12.000 max=12.000 finite=64800/64800
+
+=== Long-run stability (Earth, 150 yr) ===
+  40y=288.217K/5.7%  60y=288.150K/5.7%  100y=288.122K/5.8%  150y=288.122K/5.8%
+
+=== Regression: transport conserves area-weighted heat ===
+  Σ(cosφ·T) 9432.58382 -> 9432.58382  relative drift 1.75e-14
+  OK  conserved
+
+=== Regression: no multi-decade drift at constant CO2 ===
+node : file:///D:/climate%20sandbox/scripts/physics-check.mjs:188
+At line:1 char:129
++ ... F8Encoding]::new($false); node scripts\physics-check.mjs 2>&1 | Out-F ...
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (file:///D:/clim...s-check.mjs:188:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  console.log(`  year 1 ${yearly[0].toFixed(2)}K   year 10 ${tail[0].toFixed(2)}K   year 40 ${tail[39].toFixed(2)}K`);
+                                                                                                       ^
+
+TypeError: Cannot read properties of undefined (reading 'toFixed')
+    at file:///D:/climate%20sandbox/scripts/physics-check.mjs:188:104
+
+Node.js v24.16.0

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>globe-verify</title></head>
+<body style="margin:0">
+<pre id="out" style="position:absolute;z-index:9;background:#000;color:#0f0;font:11px monospace"></pre>
+<iframe id="f" src="/index.html" style="width:1600px;height:900px;border:0"></iframe>
+<script>
+const lines = [];
+function say(s) { lines.push(String(s)); const p = document.getElementById('out'); if (p) p.textContent = lines.join('\n'); }
+const frame = document.getElementById('f');
+
+frame.addEventListener('load', async () => {
+ try {
+  const cw = frame.contentWindow;
+  for (let i = 0; i < 80 && !cw.__pcs; i++) await new Promise((r) => setTimeout(r, 100));
+  const api = cw.__pcs;
+  api.clock.setPlaying(false);
+  await new Promise((r) => setTimeout(r, 700));
+  const g = api.globePane.globe;
+  const gl = g.gl, cv = g.canvas;
+  const w = cv.width, h = cv.height;
+
+  function frameStats() {
+    g.render(0);
+    const px = new Uint8Array(w * h * 4);
+    gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, px);
+    let lit = 0, sum = 0, max = 0;
+    const uniq = new Set();
+    for (let i = 0; i < px.length; i += 4) {
+      const lum = px[i] + px[i + 1] + px[i + 2];
+      if (lum > 40) lit++;
+      sum += lum / 3;
+      if (lum > max) max = lum;
+      uniq.add((px[i] >> 4) + ',' + (px[i + 1] >> 4) + ',' + (px[i + 2] >> 4));
+    }
+    return { lit, coverage: +(lit / (w * h)).toFixed(3), meanLum: +(sum / (w * h)).toFixed(1), maxLum: max, colors: uniq.size };
+  }
+
+  say('canvas ' + w + 'x' + h + ' viewport=' + JSON.stringify(gl.getParameter(gl.VIEWPORT)));
+  const f0 = frameStats();
+  say('none  full=' + JSON.stringify(f0));
+  // 2D copy check (what the user actually sees)
+  const copy = document.createElement('canvas'); copy.width = w; copy.height = h;
+  const c2 = copy.getContext('2d');
+  g.render(0); c2.drawImage(cv, 0, 0);
+  const cp = c2.getImageData(0, 0, w, h).data;
+  let clit = 0, csum = 0;
+  for (let i = 0; i < cp.length; i += 4) { const l = cp[i] + cp[i+1] + cp[i+2]; if (l > 60) clit++; csum += l / 3; }
+  say('2D copy: lit=' + clit + ' mean=' + (csum / (w*h)).toFixed(1) + ' center=' + cp[(Math.floor(h/2)*w + Math.floor(w/2))*4] + ',' + cp[(Math.floor(h/2)*w + Math.floor(w/2))*4+1] + ',' + cp[(Math.floor(h/2)*w + Math.floor(w/2))*4+2]);
+  // radial scan from the centre
+  g.render(0);
+  const rad = [];
+  for (const r of [0, 40, 80, 120, 160, 200, 240, 280, 320, 360, 400]) {
+    const o = new Uint8Array(4);
+    gl.readPixels(Math.floor(w/2 + r), Math.floor(h/2), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, o);
+    rad.push(r + ':' + o[0] + ',' + o[1] + ',' + o[2]);
+  }
+  say('radial: ' + rad.join(' '));
+  for (const layer of ['temperature', 'precipitation', 'vegetation', 'habitability']) {
+    api.setOverlay(layer);
+    await new Promise((r) => setTimeout(r, 400));
+    say(('overlay=' + layer).padEnd(20) + JSON.stringify(frameStats()));
+  }
+  api.setOverlay('none');
+  g.setState({ graticule: true });
+  await new Promise((r) => setTimeout(r, 200));
+  say('graticule on        ' + JSON.stringify(frameStats()));
+  g.setState({ graticule: false });
+
+  // sample a horizontal line through the globe
+  g.render(0);
+  const row = [];
+  for (const nx of [0.30, 0.38, 0.45, 0.5, 0.55, 0.62, 0.70]) {
+    const o = new Uint8Array(4);
+    gl.readPixels(Math.floor(nx * w), Math.floor(h * 0.5), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, o);
+    row.push(nx + ':' + o[0] + ',' + o[1] + ',' + o[2]);
+  }
+  say('row scan: ' + row.join('  '));
+
+  // full-canvas maxima so we can tell "all black" from "mostly black"
+  g.render(0);
+  const px2 = new Uint8Array(w * h * 4);
+  gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, px2);
+  let maxR = 0, maxPos = 0;
+  const hist = [0, 0, 0, 0, 0];
+  for (let i = 0; i < px2.length; i += 4) {
+    if (px2[i] > maxR) { maxR = px2[i]; maxPos = i / 4; }
+    const l = px2[i] + px2[i + 1] + px2[i + 2];
+    if (l > 200) hist[0]++; else if (l > 100) hist[1]++; else if (l > 50) hist[2]++; else if (l > 28) hist[3]++; else hist[4]++;
+  }
+  say('maxR=' + maxR + ' at (' + (maxPos % w) + ',' + Math.floor(maxPos / w) + ')  hist(>200,>100,>50,>28,else)=' + hist.join(','));
+
+  // force a base re-upload through the app's own method, then re-measure
+  const world = api.world();
+  world.baseTex = null;
+  g.uploadBase(world.baseTexture(), world.terrain.GX, world.terrain.GY);
+  say('after re-upload     ' + JSON.stringify(frameStats()));
+
+  // northern vs southern hemisphere should differ (ice at the poles)
+  const north = new Uint8Array(4), south = new Uint8Array(4);
+  gl.readPixels(Math.floor(w / 2), Math.floor(h * 0.28), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, north);
+  gl.readPixels(Math.floor(w / 2), Math.floor(h * 0.72), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, south);
+  say('north pole px=' + [north[0], north[1], north[2]].join(',') + '  south pole px=' + [south[0], south[1], south[2]].join(','));
+
+  // pick + project agreement
+  const rect = cv.getBoundingClientRect();
+  const hit = g.pick(rect.left + rect.width / 2, rect.top + rect.height / 2);
+  const back = hit ? g.project(hit.lat, hit.lon) : null;
+  say('pick/project round trip: ' + JSON.stringify(hit) + ' -> ' + JSON.stringify(back));
+
+  say('DONE');
+  document.title = 'GV-DONE';
+ } catch (e) { say('THREW ' + (e && e.stack || e)); }
+});
+</script>
+</body></html>

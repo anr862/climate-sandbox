@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>probe</title></head>
+<body>
+<iframe id="app" src="/index.html" style="width:1500px;height:900px;position:absolute;left:-4000px;top:0;border:0"></iframe>
+<pre id="out">running…</pre>
+<script type="module">
+const out = document.getElementById('out');
+const lines = [];
+const log = (s) => { lines.push(s); out.textContent = lines.join('\n'); };
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const frame = document.getElementById('app');
+const win = frame.contentWindow;
+
+let pcs = null;
+for (let i = 0; i < 120 && !pcs; i++) { await sleep(150); pcs = win.__pcs; }
+if (!pcs) { log('NO __pcs'); document.title = 'PROBE-FAIL'; throw new Error('no __pcs'); }
+
+const dump = (tag) => {
+  const w = pcs.state.world;
+  const p = pcs.state.params;
+  log(`[${tag}] month=${Math.round(w.time.month)}  tGlobal=${w.tGlobal.toFixed(3)}  ` +
+      `tAnnual=${Number.isFinite(w.tGlobalAnnual) ? w.tGlobalAnnual.toFixed(3) : 'n/a'}  ` +
+      `albedo=${w.albedoGlobal.toFixed(4)}  ice=${(w.iceAreaFrac * 100).toFixed(2)}%  ` +
+      `terrain=${w.terrain.GX}x${w.terrain.GY}  climate=${w.grid.NL}x${w.grid.NB}`);
+  log(`      irradiance=${p.irradiance}  co2=${p.co2}  ch4=${p.ch4}  humidity=${p.humidity}  ` +
+      `cloud=${typeof p.cloud === 'number' ? p.cloud.toFixed(2) : p.cloud}  stepMonths=${p.stepMonths}  ` +
+      `tau=${p.tauRef ?? '(BASE)'}  presetId=${pcs.state.ui.presetId}  seed=${w.seed ?? '(n/a)'}`);
+  log(`      Tmin=${Math.min(...w.grid.T).toFixed(1)}  Tmax=${Math.max(...w.grid.T).toFixed(1)}  ` +
+      `snow=${(w.grid.snowCover.reduce((a, b) => a + b, 0) / w.grid.n).toFixed(4)}`);
+};
+
+dump('boot');
+
+// step through the world exactly the way the app clock does
+const w = pcs.state.world;
+const marks = [12, 60, 120, 240, 360, 480, 576];
+let done = 0;
+for (const m of marks) {
+  while (done < m) { w.step(1, null); done++; }
+  dump(`month ${m}`);
+}
+
+document.title = 'PROBE-DONE';
+</script>
+</body>
+</html>

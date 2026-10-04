@@ -1,0 +1,102 @@
+﻿=== Earth calibration (60 yr spin-up) ===
+Earth 420ppm                     Tann=287.98K  Tinst=290.45K  eq=298.4  45N/S=282.7/291.1  pole=259.0  alb=0.269  tau=0.6317  ice=6.5%  rain=81.7  sea=-0.23m  bio=0.291
+Earth 280ppm                     Tann=285.52K  Tinst=287.90K  eq=295.9  45N/S=280.4/288.8  pole=256.6  alb=0.283  tau=0.6373  ice=7.8%  rain=72.5  sea=-0.25m  bio=0.278
+Earth 840ppm (2xCO2)             Tann=291.42K  Tinst=293.92K  eq=301.7  45N/S=285.5/294.0  pole=262.6  alb=0.255  tau=0.6222  ice=4.6%  rain=95.1  sea=-0.20m  bio=0.313
+Earth, H2O feedback off          Tann=287.98K  Tinst=290.42K  eq=298.3  45N/S=282.7/291.1  pole=259.0  alb=0.269  tau=0.6317  ice=6.4%  rain=81.6  sea=-0.23m  bio=0.291
+Earth, transport x2              Tann=288.23K  Tinst=290.71K  eq=298.5  45N/S=282.7/291.7  pole=259.6  alb=0.267  tau=0.6317  ice=6.2%  rain=82.4  sea=-0.23m  bio=0.292
+Earth, transport x0.3            Tann=286.39K  Tinst=288.72K  eq=297.4  45N/S=282.1/288.0  pole=255.9  alb=0.282  tau=0.6317  ice=8.0%  rain=76.7  sea=-0.24m  bio=0.289
+Earth, tilt 0                    Tann=290.77K  Tinst=291.82K  eq=299.4  45N/S=287.4/289.1  pole=257.3  alb=0.262  tau=0.6317  ice=2.3%  rain=84.4  sea=-0.16m  bio=0.308
+Earth, tilt 60                   Tann=286.62K  Tinst=290.60K  eq=294.4  45N/S=275.2/298.5  pole=289.0  alb=0.249  tau=0.6317  ice=5.9%  rain=82.3  sea=-0.03m  bio=0.287
+
+=== Presets (40 yr) ===
+地球 · Earth (2024)                Tann=288.10K  Tinst=290.57K  eq=298.4  45N/S=282.8/291.2  pole=259.0  alb=0.268  tau=0.6317  ice=6.4%  rain=82.0  sea=-0.23m  bio=0.291
+前工业地球 · 1750                     Tann=286.55K  Tinst=288.36K  eq=297.0  45N/S=279.5/290.1  pole=257.7  alb=0.276  tau=0.6377  ice=7.3%  rain=73.1  sea=-0.18m  bio=0.272
+地球 · CO₂ 加倍 (840 ppm)            Tann=290.46K  Tinst=291.13K  eq=302.8  45N/S=280.2/291.3  pole=264.1  alb=0.265  tau=0.6222  ice=4.4%  rain=85.4  sea=-0.15m  bio=0.261
+雪球地球 · Snowball                  Tann=219.09K  Tinst=220.34K  eq=229.3  45N/S=215.3/215.6  pole=207.7  alb=0.630  tau=0.6528  ice=80.4%  rain=1.1  sea=-0.87m  bio=0.026
+温室地球 · Hothouse                  Tann=306.57K  Tinst=308.14K  eq=316.7  45N/S=299.9/306.4  pole=278.5  alb=0.241  tau=0.6006  ice=0.6%  rain=181.0  sea=-0.00m  bio=0.246
+火星 · Mars-like                   Tann=170.28K  Tinst=177.74K  eq=187.6  45N/S=166.0/181.6  pole=146.1  alb=0.702  tau=0.6634  ice=24.5%  rain=1.1  sea=-2.31m  bio=0.000
+金星 · Venus-like                  Tann=376.72K  Tinst=376.97K  eq=380.7  45N/S=374.5/376.0  pole=358.3  alb=0.303  tau=0.4899  ice=0.0%  rain=74.2  sea=0.00m  bio=0.000
+泰坦型 · Titan-like                 Tann=70.13K  Tinst=70.13K  eq=70.7  45N/S=70.0/70.0  pole=70.0  alb=0.838  tau=0.6679  ice=28.8%  rain=1.1  sea=-1.93m  bio=0.002
+干旱超级大陆 · Arid Supercontinent     Tann=294.71K  Tinst=297.14K  eq=306.5  45N/S=286.2/303.1  pole=260.8  alb=0.220  tau=0.6247  ice=1.2%  rain=40.2  sea=-0.00m  bio=0.584
+群岛世界 · Archipelago               Tann=292.18K  Tinst=293.59K  eq=302.7  45N/S=284.9/292.2  pole=262.5  alb=0.238  tau=0.6317  ice=4.8%  rain=93.5  sea=-0.09m  bio=0.145
+潮汐锁定 · Eyeball                   Tann=198.84K  Tinst=199.31K  eq=204.9  45N/S=195.0/197.6  pole=182.3  alb=0.688  tau=0.6143  ice=72.7%  rain=1.1  sea=-1.36m  bio=0.022
+冰卫星 · Ice Moon                   Tann=94.55K  Tinst=94.57K  eq=115.7  45N/S=74.0/79.2  pole=84.7  alb=0.705  tau=0.7363  ice=100.0%  rain=1.1  sea=-0.00m  bio=0.035
+高重力海洋行星 · Alto                   Tann=312.81K  Tinst=313.69K  eq=320.2  45N/S=304.4/313.6  pole=292.0  alb=0.245  tau=0.6041  ice=0.0%  rain=296.8  sea=0.00m  bio=0.086
+
+=== Seasonal cycle, Earth (year 10) ===
+  month  1: N60=268.4K  S60=281.4K  eq=296.7K  global=290.82K
+  month  2: N60=264.5K  S60=286.8K  eq=295.2K  global=290.16K
+  month  3: N60=263.0K  S60=287.7K  eq=294.6K  global=289.35K
+  month  4: N60=264.3K  S60=284.5K  eq=294.9K  global=288.55K
+  month  5: N60=268.7K  S60=278.6K  eq=295.2K  global=287.78K
+  month  6: N60=275.2K  S60=271.2K  eq=295.1K  global=287.00K
+  month  7: N60=282.3K  S60=263.0K  eq=294.9K  global=286.27K
+  month  8: N60=288.5K  S60=255.0K  eq=295.4K  global=285.99K
+  month  9: N60=291.2K  S60=251.5K  eq=296.8K  global=286.91K
+  month 10: N60=288.1K  S60=252.8K  eq=299.0K  global=288.52K
+  month 11: N60=281.7K  S60=261.2K  eq=299.7K  global=290.14K
+  month 12: N60=274.5K  S60=272.3K  eq=298.6K  global=290.98K
+
+=== Long-run stability & speed ===
+Snowball @180yr                  Tann=219.09K  Tinst=220.33K  eq=229.3  45N/S=215.3/215.6  pole=207.7  alb=0.630  tau=0.6528  ice=80.6%  rain=1.1  sea=-0.88m  bio=0.026
+  48 sim-months/s
+Hothouse @120yr                  Tann=306.57K  Tinst=308.14K  eq=316.7  45N/S=299.9/306.4  pole=278.5  alb=0.241  tau=0.6006  ice=0.6%  rain=181.0  sea=-0.00m  bio=0.246
+
+=== Extreme worlds ===
+Mars                             Tann=170.28K  Tinst=177.74K  eq=187.6  45N/S=166.0/181.6  pole=146.1  alb=0.702  tau=0.6634  ice=24.5%  rain=1.1  sea=-2.31m  bio=0.000
+Venus                            Tann=376.72K  Tinst=376.97K  eq=380.7  45N/S=374.5/376.0  pole=358.3  alb=0.303  tau=0.4899  ice=0.0%  rain=74.2  sea=0.00m  bio=0.000
+Ice moon                         Tann=94.55K  Tinst=94.57K  eq=115.7  45N/S=74.0/79.2  pole=84.7  alb=0.705  tau=0.7363  ice=100.0%  rain=1.1  sea=-0.00m  bio=0.035
+Eyeball                          Tann=198.84K  Tinst=199.31K  eq=204.9  45N/S=195.0/197.6  pole=182.3  alb=0.688  tau=0.6143  ice=72.7%  rain=1.1  sea=-1.36m  bio=0.022
+
+=== Layer sanity (Earth) ===
+  temperature    min=-30.000 max=40.000 finite=64800/64800
+  precipitation  min=0.000 max=500.000 finite=64800/64800
+  oxygen         min=0.000 max=40.000 finite=64800/64800
+  humidity       min=0.000 max=100.000 finite=64800/64800
+  vegetation     min=0.000 max=100.000 finite=64800/64800
+  habitability   min=0.000 max=1.000 finite=64800/64800
+  toxicity       min=0.000 max=1.000 finite=64800/64800
+  aerosol        min=0.000 max=1.000 finite=64800/64800
+  cloud          min=0.000 max=100.000 finite=64800/64800
+  diurnal        min=0.000 max=50.000 finite=64800/64800
+  seasonal       min=0.000 max=100.000 finite=64800/64800
+  precipSeason   min=0.000 max=1500.000 finite=64800/64800
+  rivers         min=0.000 max=1.000 finite=64800/64800
+  seaIce         min=0.000 max=100.000 finite=64800/64800
+  windSpeed      min=0.000 max=50.000 finite=64800/64800
+  currentSpeed   min=0.000 max=2.500 finite=64800/64800
+  anomaly        min=-12.000 max=12.000 finite=64800/64800
+
+=== Long-run stability & drift (Earth, 150 yr) ===
+  40y=288.097K/6.5%  60y=287.976K/6.5%  100y=287.971K/6.5%  150y=287.971K/6.5%
+  year 1 286.88K   year 10 288.49K   year 40 288.10K
+  trend over years 60-150: -0.00001 K/yr (-0.001 K over 90 yr)
+  OK  steady state (no trend)
+
+=== Regression: transport conserves area-weighted heat ===
+  Σ(cosφ·T) 9432.58382 -> 9432.58382  relative drift 1.75e-14
+  OK  conserved
+
+=== Robustness across terrain seeds and mesh sizes ===
+  seed 20240 @360x180    Tann=288.19K  alb=0.268  ice=6.3%
+  seed 4242  @360x180    Tann=286.83K  alb=0.282  ice=6.7%
+  seed 777   @360x180    Tann=289.81K  alb=0.261  ice=3.0%
+  seed 12345 @360x180    Tann=288.92K  alb=0.268  ice=5.0%
+  seed 20240 @180x90     Tann=288.46K  alb=0.266  ice=6.0%
+  seed 20240 @720x360    Tann=281.94K  alb=0.317  ice=13.0%
+  spread 7.86 K, coldest 281.94 K (seed 20240 @720x360)
+
+=== Meteor impacts ===
+  month 35     : impact=false (must be false), dust=0.000
+  month 36     : count=3 total=2.82e+15 kg load=1.078 fireball=133.5 K site=38.7,128.7
+  +2 years     : T=282.87 K (min 277.89, was 288.94) dust=0.434 rain=58.5 mm/mo
+  mass    1e+9 kg -> dust 0.000, fireball 0.1 K
+  mass   1e+12 kg -> dust 0.000, fireball 28.9 K
+  mass   1e+15 kg -> dust 0.910, fireball 117.4 K
+  mass   1e+18 kg -> dust 1.848, fireball 207.4 K
+  mass   1e+21 kg -> dust 2.785, fireball 297.4 K
+
+=== Colourbar ranges (legend) ===
+temperature=-30…40  oxygen=0…40  humidity=0…100  vegetation=0…100  habitability=0…1  toxicity=0…1  aerosol=0…1  cloud=0…100  diurnal=0…50  seasonal=0…100  precipitation=0…500  precipSeason=0…1500  rivers=0…1  windSpeed=0…50  currentSpeed=0…2.5  seaIce=0…100  anomaly=-12…12  
+  manual override wins: temperature -5…5 custom=true
+  vectors: 风场(m/s), 洋流(m/s)

@@ -1,0 +1,45 @@
+﻿=== Earth calibration (60 yr spin-up) ===
+Earth 420ppm                     T=290.36K  eq=298.6  45N/S=283.8/291.7  pole=260.2  alb=0.287  tau=0.5965  ice=5.5%  net=7.044  rain=67.5  sea=-0.22m  bio=0.289
+Earth 280ppm                     T=289.22K  eq=297.4  45N/S=282.8/290.5  pole=258.8  alb=0.292  tau=0.6021  ice=6.2%  net=6.187  rain=63.6  sea=-0.23m  bio=0.277
+Earth 840ppm (2xCO2)             T=292.52K  eq=300.7  45N/S=285.6/293.7  pole=262.9  alb=0.277  tau=0.5870  ice=4.4%  net=8.991  rain=74.5  sea=-0.19m  bio=0.310
+Earth, H2O feedback off          T=290.29K  eq=298.5  45N/S=283.8/291.6  pole=260.2  alb=0.287  tau=0.5965  ice=5.5%  net=5.796  rain=67.3  sea=-0.22m  bio=0.289
+Earth, transport x2              T=290.49K  eq=298.6  45N/S=283.7/292.2  pole=260.8  alb=0.286  tau=0.5965  ice=5.2%  net=7.101  rain=67.8  sea=-0.22m  bio=0.290
+Earth, transport x0.3            T=289.72K  eq=298.4  45N/S=284.3/289.4  pole=257.7  alb=0.293  tau=0.5965  ice=6.6%  net=6.936  rain=66.2  sea=-0.22m  bio=0.288
+Earth, tilt 0                    T=290.84K  eq=298.4  45N/S=287.5/289.0  pole=256.8  alb=0.286  tau=0.5965  ice=2.3%  net=11.883  rain=67.6  sea=-0.16m  bio=0.304
+Earth, tilt 60                   T=292.46K  eq=295.2  45N/S=276.7/300.4  pole=291.4  alb=0.264  tau=0.5965  ice=3.8%  net=8.654  rain=73.5  sea=0.00m  bio=0.287
+
+=== Presets (60 yr) ===
+地球 · Earth (2024)                T=290.36K  eq=298.6  45N/S=283.8/291.7  pole=260.2  alb=0.287  tau=0.5965  ice=5.5%  net=7.044  rain=67.5  sea=-0.22m  bio=0.289
+前工业地球 · 1750                     T=288.91K  eq=297.6  45N/S=281.2/291.1  pole=259.4  alb=0.289  tau=0.6025  ice=6.2%  net=9.342  rain=61.9  sea=-0.17m  bio=0.271
+地球 · CO₂ 加倍 (840 ppm)            T=289.87K  eq=301.1  45N/S=280.6/290.8  pole=265.4  alb=0.287  tau=0.5870  ice=4.2%  net=14.344  rain=67.3  sea=-0.13m  bio=0.255
+雪球地球 · Snowball                  T=277.19K  eq=290.7  45N/S=271.6/269.9  pole=251.1  alb=0.299  tau=0.6176  ice=14.5%  net=0.994  rain=6.0  sea=-0.41m  bio=0.095
+温室地球 · Hothouse                  T=294.75K  eq=303.4  45N/S=288.7/294.4  pole=268.5  alb=0.320  tau=0.5654  ice=2.9%  net=12.341  rain=104.3  sea=-0.06m  bio=0.269
+火星 · Mars-like                   T=183.12K  eq=193.2  45N/S=171.8/186.7  pole=151.2  alb=0.703  tau=0.6282  ice=25.0%  net=-0.298  rain=1.1  sea=-2.35m  bio=0.000
+金星 · Venus-like                  T=369.06K  eq=373.0  45N/S=367.1/368.5  pole=350.4  alb=0.334  tau=0.4547  ice=0.0%  net=3.892  rain=69.5  sea=0.00m  bio=0.000
+泰坦型 · Titan-like                 T=70.13K  eq=70.7  45N/S=70.0/70.0  pole=70.0  alb=0.847  tau=0.6327  ice=29.2%  net=-1.308  rain=1.1  sea=-1.96m  bio=0.002
+干旱超级大陆 · Arid Supercontinent     T=299.41K  eq=308.3  45N/S=289.7/304.7  pole=263.6  alb=0.226  tau=0.5895  ice=1.1%  net=2.347  rain=42.0  sea=-0.00m  bio=0.580
+群岛世界 · Archipelago               T=283.23K  eq=291.7  45N/S=276.9/283.6  pole=253.4  alb=0.347  tau=0.5965  ice=11.3%  net=8.829  rain=58.6  sea=-0.12m  bio=0.149
+潮汐锁定 · Eyeball                   T=205.56K  eq=211.1  45N/S=201.5/204.0  pole=188.1  alb=0.708  tau=0.5791  ice=72.9%  net=1.123  rain=1.1  sea=-1.38m  bio=0.022
+冰卫星 · Ice Moon                   T=98.28K  eq=119.4  45N/S=78.9/83.5  pole=87.8  alb=0.707  tau=0.7011  ice=100.0%  net=-1.916  rain=1.1  sea=-0.00m  bio=0.035
+高重力海洋行星 · Alto                   T=294.92K  eq=300.8  45N/S=288.2/296.2  pole=276.5  alb=0.335  tau=0.5689  ice=1.1%  net=19.019  rain=143.0  sea=0.00m  bio=0.123
+
+=== Seasonal cycle, Earth (year 10) ===
+  month  1: N60=269.5K  S60=281.6K  eq=296.5K  global=290.52K
+  month  2: N60=265.6K  S60=287.2K  eq=294.9K  global=289.92K
+  month  3: N60=264.1K  S60=288.3K  eq=294.3K  global=289.19K
+  month  4: N60=265.5K  S60=285.2K  eq=294.6K  global=288.45K
+  month  5: N60=269.8K  S60=279.6K  eq=294.9K  global=287.74K
+  month  6: N60=276.1K  S60=272.3K  eq=294.9K  global=287.02K
+  month  7: N60=283.0K  S60=263.8K  eq=295.0K  global=286.32K
+  month  8: N60=289.3K  S60=255.0K  eq=295.5K  global=286.18K
+  month  9: N60=292.1K  S60=251.4K  eq=296.9K  global=287.11K
+  month 10: N60=289.3K  S60=252.4K  eq=298.9K  global=288.57K
+  month 11: N60=282.5K  S60=259.7K  eq=300.0K  global=289.92K
+  month 12: N60=275.5K  S60=271.8K  eq=298.6K  global=290.66K
+
+=== Long-run stability & speed ===
+Snowball @400yr                  T=229.28K  eq=238.7  45N/S=224.5/224.6  pole=217.3  alb=0.635  tau=0.6176  ice=80.9%  net=-1.009  rain=1.1  sea=-0.88m  bio=0.027
+  61 sim-months/s
+Hothouse @200yr                  T=294.71K  eq=303.3  45N/S=288.7/294.4  pole=268.5  alb=0.320  tau=0.5654  ice=2.9%  net=12.302  rain=104.2  sea=-0.06m  bio=0.269
+
+=== Extreme worlds ===

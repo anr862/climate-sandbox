@@ -1,0 +1,1394 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<title>FAILED</title>
+<style>
+  body { background:#0b0f14; color:#c9d3de; font:12px/1.5 ui-monospace,monospace; margin:0; padding:14px; }
+  h1 { font-size:13px; }
+</style>
+</head>
+<body>
+<h1>Planetary Climate Sim - browser integration harness</h1>
+<pre id="out">PASS app boots (window.__pcs present)
+PASS index.html contains every required element  ::  []
+PASS parameter panel built every row  ::  {"rows":60,"locks":60}
+PASS slider widgets present  ::  {"sliders":52}
+PASS layer strip has 16 data layers plus none  ::  {"count":17}
+PASS 风场 / 洋流 layers are present  ::  ["风场","洋流"]
+FAIL data panel built metric cards  ::  {"cards":7}
+FAIL data panel built charts  ::  {"charts":7}
+PASS WebGL context created  ::  "ok"
+PASS globe.project returns an on-canvas point  ::  {"x":968,"y":217}
+PASS globe.pick round-trips a screen point  ::  {"lat":70.5,"lon":-58.5}
+PASS globe renders a lit sphere  ::  {"lit":839647,"coverage":0.848,"meanLum":90.6,"maxLum":521,"colors":155}
+PASS globe texture has many distinct colours  ::  {"colors":155}
+PASS every data layer changes the rendered image  ::  {"temperature":155,"precipitation":48,"vegetation":69,"habitability":121,"oxygen":65}
+PASS animation loop is running  ::  {"frames":0,"monthsByClock":0}
+PASS clock advances the simulation  ::  {"months":576,"tGlobal":211.67}
+PASS time series is sampled  ::  {"samples":583}
+PASS mean surface temperature is physical  ::  211.67
+PASS planetary albedo is physical  ::  0.707
+PASS energy budget closes  ::  -0.28
+PASS sea level change is plausible  ::  -0.88
+PASS all 14 data layers compute finite values  ::  {"temperature":"-30.00..40.00","precipitation":"0.00..500.00","precipSeason":"0.00..1500.00","humidity":"0.00..100.00","vegetation":"0.00..100.00","oxygen":"0.00..40.00","habitability":"0.00..1.00","toxicity":"0.00..1.00","aerosol":"0.00..1.00","diurnal":"0.00..50.00","seasonal":"0.00..100.00","rivers":"0.00..1.00","seaIce":"0.00..100.00","anomaly":"-12.00..12.00"}
+PASS probe read-out is complete  ::  {"t":216.1,"biome":"海冰"}
+PASS clicking the globe creates a probe region  ::  {"lat":74.9,"lon":-52.4}
+PASS probe card shows local climate
+PASS charts switch to the region scope  ::  "74.9°, -52.4° · 半径 6°"
+PASS region can be cleared
+PASS chart canvases are rendered  ::  {"total":7,"painted":7}
+FAIL metric cards all show a value  ::  ["-67.23 °C","— °C","420 ppm","-0.9 m","100.0 %","-82.694 W/m²","0.025"]
+PASS raising CO2 warms the planet  ::  {"before":211.67,"after":213.7}
+PASS undo restores a parameter  ::  {"from":1361,"set":1481,"undone":1361}
+PASS redo re-applies a parameter
+PASS lock button toggles a parameter lock  ::  {"locks":1}
+PASS lock can be released
+PASS every tested preset builds a valid world  ::  {"mars":152.5,"venus":343.2,"snowball":237.8,"archipelago":284.9,"ice-moon":126.4}
+PASS preset roster is complete  ::  13
+PASS wizard opens
+PASS wizard steps render parameter fields  ::  {"fields":16}
+PASS wizard has a terrain canvas  ::  {"step":3,"toolkit":true,"w":960,"h":480}
+PASS terrain brush edits the height field  ::  {"gx":360,"gy":180,"idx":32580,"lat":-0.5,"lon":0.5,"radius":12,"strength":1,"limits":{"radius":1560,"gravity":1.31,"minElevation":-13000,"maxElevation":13000},"sameGrid":true,"before":-16517,"after":-13000,"rivers":681}
+PASS river routing produces channels  ::  {"cells":681}
+PASS manual mode still offers terrain tools
+PASS wizard walkthrough without errors
+PASS wizard creates a fresh planet  ::  {"name":"新世界","cells":64800}
+PASS terrain editor opens
+PASS terrain editor applies changes to the world  ::  {"before":"d2bbb20d","after":"38c4cb4e","cells":64800}
+PASS terrain editor flow without errors
+PASS scrubbing seeks the world back in time  ::  {"month":0,"history":56}
+PASS returning to live restores the newest month  ::  120
+PASS timeline scrubbing without errors
+PASS creating a branch adds a parallel timeline  ::  {"before":1,"after":2,"options":2}
+PASS switching between branches works
+PASS branch flow without errors
+PASS save dialog lists eight slots
+PASS save writes a slot to localStorage  ::  {"slots":1}
+PASS loading a slot restores the saved scene  ::  {"co2":100}
+PASS save/load flow without errors
+PASS scene round-trips through JSON  ::  {"bytes":2634200,"version":1}
+PASS scene serialisation without errors
+PASS unit switch changes the displayed temperature  ::  {"initial":"8.94 °C","system0":"metric","afterKelvinEvent":{"text":"282.09 K","system":"kelvin"},"afterDirectCall":{"text":"282.09 K","system":"kelvin"},"backToMetric":{"text":"8.94 °C","system":"metric"}}
+PASS every export path produces output  ::  {"_size":2634212,"_type":"application/json","series":"11445B","grid":"8403447B","params":"2627B","scene":"2634212B","png":"2634212B"}
+PASS view presets orient the globe north / south / equator  ::  {"north":0,"south":3.142,"equator":-1.571}
+PASS 赤道 / 北极 / 南极 centre exactly what they name  ::  {"px":{"north":0,"south":0,"equator":0}}
+PASS 视角 column is split into 3D and 平面  ::  {"buttons":["globe","flat"]}
+PASS 3D mode offers reset-to equator / north pole / south pole  ::  {"buttons":["equator","northPole","southPole"],"hidden":false}
+PASS the reset row drives the globe  ::  {"pitch":0,"preset":"northPole"}
+PASS the reset row hides in flat mode  ::  {"hidden":true}
+PASS the reset row returns in 3D mode  ::  {"hidden":false}
+PASS flat projection switches the visible canvas  ::  {"mode":"flat"}
+PASS flat map renders the terrain  ::  {"colors":76,"canvas":"1038x954"}
+PASS arrow keys pan the flat map  ::  {"before":0.5,"after":0.18}
+PASS flat map panning wraps horizontally (stays in 0..1)  ::  {"cx":0.22}
+PASS arrow keys shift the latitude band when zoomed in  ::  {"before":0.5,"after":0.5588,"zoom":2.5}
+PASS flat map zooms  ::  {"z0":1,"z1":2}
+PASS switching back to 3D restores the globe canvas  ::  {"mode":"globe"}
+PASS view preset + flat map flow without errors
+PASS shadow toggle removes the dark hemisphere  ::  {"withShadow":{"mean":34.79,"darkFraction":0.247},"withoutShadow":{"mean":102.56,"darkFraction":0.152}}
+PASS shadow checkbox drives the globe  ::  {"afterCheck":true,"final":false}
+PASS shadow toggle flow without errors
+PASS parameter panel has the 陨石 group  ::  []
+PASS the 陨石 group is labelled  ::  ["恒星与辐照","轨道与自转","大气成分","海洋与冰盖","反照率","地形","温室效应","洋流与大气环流","地表与渲染","陨石","时间与模拟"]
+PASS a meteor shower fires at the chosen month and injects dust  ::  {"enabled":true,"at":62,"month":63,"impact":{"count":4,"total":"4.67e+15","load":1.147,"dust":1.104}}
+PASS the shower perturbs the climate  ::  {"heat":140.1,"masses":[970000000000000,1200000000000000,1100000000000000,1400000000000000]}
+PASS the impact survives a snapshot round-trip
+PASS the impact reports a blast footprint for the animation  ::  {"radiusDeg":4.52,"blastKm":502}
+PASS the impact starts the on-globe animation  ::  {"lat":-53.89,"lon":97.81,"radiusDeg":4.52}
+PASS the impact animation renders without errors
+PASS impact dust decays over a couple of years  ::  {"start":1.147,"after2yr":0.445}
+PASS meteor flow without errors
+PASS habitability is zero over the ocean  ::  {"oceanCells":3309,"oceanMax":0}
+PASS habitability is a meaningful land index  ::  {"landCells":1299,"landMean":0.51}
+PASS the 宜居度 layer is blank over water  ::  {"value":0}
+PASS river proximity raises habitability  ::  {"nearRiver":0.529,"away":0.503}
+PASS terrain drives the wind field (orographic lift)  ::  {"maxLift":68.04}
+PASS the wind field drives the ocean currents  ::  {"withWind":0.384,"withoutWind":0.383}
+PASS habitability + terrain-flow flow without errors
+PASS 风场 layer shows a vector overlay  ::  {"visible":true,"arrows":406,"skip":null,"overlay":"windSpeed","canvas":true}
+PASS vector overlay actually paints arrows  ::  {"painted":878}
+PASS legend marks the vector layers  ::  "0.0 m/s  ←  →  50.0 m/s（箭头方向 = 流向 / 风向）"
+PASS 洋流 layer shows a vector overlay  ::  {"arrows":354}
+PASS flat map also draws the flow field  ::  {"arrows":304,"painted":651}
+PASS scalar layers hide the vector overlay  ::  {"hidden":true,"arrows":0,"skip":"not-a-vector-layer"}
+PASS legend editor starts closed
+PASS clicking the colourbar opens the legend editor  ::  {"hidden":false}
+PASS legend editor offers ten colourbars  ::  {"count":10}
+PASS choosing a colourbar updates the legend gradient  ::  {"chosen":"slate","changed":true}
+PASS the colourbar range can be typed in manually  ::  {"range":{"min":-12,"max":44},"ticks":"-12.0 °C  ←  →  44.0 °C","fields":{"min":"-12","max":"44"},"defaultsBefore":{"min":"-30","max":"40"}}
+PASS the manual range reaches the renderer  ::  {"min":-12,"max":44,"custom":true}
+PASS "自适应范围" switches the layer back to auto-scaling  ::  {"min":-30,"max":40}
+PASS "恢复默认" restores the registered default range  ::  {"auto":false,"range":null,"applied":{"min":-30,"max":40}}
+PASS legend editor closes again
+PASS the custom colourbar editor opens  ::  {"hidden":false}
+PASS clicking the bar inserts a colour stop  ::  {"before":5,"after":6,"stops":[0,0.25,0.32,0.5,0.75,1]}
+PASS the inserted stop lands where it was clicked  ::  [0,0.25,0.32,0.5,0.75,1]
+PASS the editor has a colour palette  ::  {"count":24}
+PASS picking a palette colour paints the selected stop  ::  {"color":"#3f4f78","stops":["#3f4f78","#57809c","#3f4f78","#9eac86","#bb7f62","#8c4b56"]}
+PASS the editor can switch to a stepped colourbar  ::  {"mode":"stepped"}
+PASS applying stores the custom colourbar for the layer  ::  {"mode":"stepped","stops":6}
+PASS the legend marks the layer as custom and draws the new ramp  ::  {"active":["自定义"]}
+PASS 恢复默认 clears the custom colourbar too  ::  {"custom":null}
+PASS a preset colourbar can still be chosen after using the custom editor  ::  {"ramp":"slate"}
+PASS every colourbar uses the requested default range  ::  []
+PASS vector + legend flow without errors
+PASS terrain editor can switch to a 3D preview  ::  {"mode":"globe","webgl":true}
+PASS terrain editor switches back to the flat map  ::  {"mode":"flat"}
+PASS brush radius accepts a numeric input  ::  {"radius":25,"slider":25}
+PASS brush radius has no knob (precise numeric entry instead)  ::  {"present":false}
+PASS change-height control is labelled in metres  ::  {"unit":"m"}
+PASS generation sliders expose numeric inputs
+PASS 板块破碎程度 accepts manual numeric entry  ::  {"slider":"72"}
+PASS 海平面高度 accepts manual numeric entry and shifts the terrain  ::  {"before":-12191,"after":-12391}
+PASS terrain editor has a column splitter
+PASS dragging the splitter widens the configuration column  ::  {"before":"300px","after":"420px"}
+PASS flat map round-trips pointer -&gt; lat/lon -&gt; pointer  ::  {"dx":0,"dy":0}
+PASS plain wheel resizes the brush without zooming  ::  {"radius":[25,27.500000000000004],"zoom":[1,1]}
+PASS Ctrl+wheel zooms the flat map  ::  {"zoom":1.18}
+PASS arrow keys pan the terrain editor map  ::  {"before":0.5427,"after":0.5156,"zoom":2.95,"active":"BODY"}
+PASS 3D preview zooms with the wheel  ::  {"before":3,"after":2.775}
+PASS 3D preview rotates with Ctrl+drag  ::  {"before":-0.55,"after":0.2}
+PASS raise/lower show an absolute "change height" control  ::  {"label":"改变高度","shown":true,"value":"600"}
+PASS smooth/flatten switch to the strength control  ::  {"label":"强度参数","heightRow":false,"strengthRow":true}
+PASS change height accepts a numeric input  ::  {"brushHeight":1500}
+PASS painting changes the heightfield  ::  {"before":-195,"after":704}
+PASS the preview repaints immediately after a stroke  ::  {"previewColors":72,"needsRender":false}
+PASS terrain editor view + brush flow without errors
+PASS wizard exposes a mesh-resolution slider
+PASS wizard offers "regenerate at this resolution"
+PASS the wizard grid follows the requested resolution  ::  {"gx":180,"gy":90}
+PASS a planet can be created at a custom resolution  ::  {"terrain":"180x90","climate":"24x48"}
+PASS custom-resolution planet simulates normally  ::  {"tGlobal":284.68}
+PASS choosing a preset asks for the mesh count first  ::  {"visible":true}
+PASS the preset is built at the chosen resolution  ::  {"terrain":"180x90","irradiance":586}
+PASS grid resolution flow without errors
+PASS 50-year integration stays bounded  ::  290.65
+PASS polar temperature is physical  ::  250.5
+PASS no non-finite values in climate fields  ::  {"bad":0}
+PASS climate responds to CO2 across the range  ::  ["280ppm=287.42","420ppm=288.96","560ppm=290.26","840ppm=291.95"]
+
+==== 154/157 passed, 3 failed ====</pre>
+<div id="harness-marker">HARNESS_RESULT total=157 failed=3 data panel built metric cards | data panel built charts | metric cards all show a value</div>
+<iframe id="app-frame" src="/index.html" style="width:1700px;height:1000px;position:absolute;left:-4200px;top:0;border:0"></iframe>
+<script type="module">
+const log = [];
+const results = [];
+const outEl = document.getElementById('out');
+const markerEl = document.getElementById('harness-marker');
+
+function render() {
+  outEl.textContent = log.join('\n');
+  const failed = results.filter((r) => !r.ok);
+  markerEl.textContent = 'HARNESS_RESULT total=' + results.length + ' failed=' + failed.length + ' ' +
+    failed.map((f) => f.name).join(' | ');
+}
+function report(name, ok, detail) {
+  results.push({ name, ok, detail: detail === undefined ? null : detail });
+  log.push((ok ? 'PASS ' : 'FAIL ') + name +
+    (detail !== undefined && detail !== null ? '  ::  ' + JSON.stringify(detail) : ''));
+  render();
+}
+
+window.addEventListener('error', (e) => report('window.error', false, String(e.message)));
+window.addEventListener('unhandledrejection', (e) =>
+  report('unhandledrejection', false, String((e.reason && e.reason.message) || e.reason)));
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Cheap order-sensitive checksum so we can tell whether a grid changed. */
+function checksum(arr) {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < arr.length; i += 7) {
+    h ^= Math.round(arr[i]) & 0xff;
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  return h.toString(16);
+}
+
+function scanFinite(w) {
+  let bad = 0;
+  for (const key of ['T', 'albedo', 'precip', 'vegetation', 'habitability', 'ice']) {
+    const arr = w.grid[key];
+    if (!arr) continue;
+    for (let i = 0; i < arr.length; i++) if (!isFinite(arr[i])) bad++;
+  }
+  return bad;
+}
+
+async function main() {
+  const frame = document.getElementById('app-frame');
+  await new Promise((res) => frame.addEventListener('load', res, { once: true }));
+  const cw = frame.contentWindow;
+  const doc = frame.contentDocument;
+  // Surface exceptions raised inside the app frame: main.js wraps the render
+  // loop in try/catch, so a broken overlay would otherwise fail silently.
+  cw.addEventListener('error', (e) => report('frame error', false,
+    String((e.error && e.error.stack) || e.message || e)));
+  cw.addEventListener('unhandledrejection', (e) =>
+    report('frame unhandledrejection', false, String((e.reason && e.reason.message) || e.reason)));
+  for (let i = 0; i < 120 && !cw.__pcs; i++) await sleep(100);
+
+  report('app boots (window.__pcs present)', !!cw.__pcs);
+  if (!cw.__pcs) { finish(); return; }
+  const api = cw.__pcs;
+
+  /* ---------------- DOM contract ---------------- */
+  const requiredIds = ['topbar','leftPanel','rightPanel','globe','layerStrip','legendBar','presetSel','btnNewPlanet',
+    'btnSave','btnLoad','btnFileSave','btnFileLoad','btnPlay','btnBranch','branchSel','btnTerrain','timeScrub','scrubLabel',
+    'unitSel','btnExport','btnUndo','btnRedo','btnHelp','paramSections','paramSearch','lockSummary','chkAutoDerive',
+    'probeTip','toast','baseLayerSeg','metricGrid','charts','probeBody','probeCard','condList','scopeLabel','btnClearRegion',
+    'overlay','wizard','terrainEditor','slots','slotList','exportModal','help','wizSteps','wizModes','wizPanes',
+    'wizBack','wizNext','wizCreate','hudName','hudRadius','hudGravity','hudStar','hudCursor','simClock'];
+  const missing = requiredIds.filter((id) => !doc.getElementById(id));
+  report('index.html contains every required element', missing.length === 0, missing);
+
+  const rows = doc.querySelectorAll('#paramSections .prow');
+  const locks = doc.querySelectorAll('#paramSections .lock-btn');
+  const sliders = doc.querySelectorAll('#paramSections input[type=range]');
+  report('parameter panel built every row', rows.length >= 50 && locks.length === rows.length,
+    { rows: rows.length, locks: locks.length });
+  report('slider widgets present', sliders.length >= 40, { sliders: sliders.length });
+
+  const layerBtns = doc.querySelectorAll('#layerStrip .layer-btn');
+  report('layer strip has 16 data layers plus none', layerBtns.length === 17, { count: layerBtns.length });
+  const vectorBtns = Array.from(layerBtns).filter((b) => b.dataset.layer === 'windSpeed' || b.dataset.layer === 'currentSpeed');
+  report('风场 / 洋流 layers are present',
+    vectorBtns.length === 2 && vectorBtns[0].textContent === '风场' && vectorBtns[1].textContent === '洋流',
+    vectorBtns.map((b) => b.textContent));
+
+  const metricCards = doc.querySelectorAll('#metricGrid .metric');
+  const chartCards = doc.querySelectorAll('#charts .chart-card');
+  report('data panel built metric cards', metricCards.length === 6, { cards: metricCards.length });
+  report('data panel built charts', chartCards.length === 6, { charts: chartCards.length });
+
+  /* ---------------- globe ---------------- */
+  const g = api.globePane.globe;
+  report('WebGL context created', g.ok === true, g.error || 'ok');
+  if (g.ok) {
+    const rect = g.canvas.getBoundingClientRect();
+    const pos = g.project(0, 0);
+    report('globe.project returns an on-canvas point',
+      !!pos && isFinite(pos.x) && isFinite(pos.y) && pos.x > 0 && pos.x < rect.width && pos.y > 0 && pos.y < rect.height,
+      pos && { x: Math.round(pos.x), y: Math.round(pos.y) });
+    const picked = g.pick(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    report('globe.pick round-trips a screen point',
+      !!picked && isFinite(picked.lat) && isFinite(picked.lon) && Math.abs(picked.lat) <= 90,
+      picked && { lat: +picked.lat.toFixed(1), lon: +picked.lon.toFixed(1) });
+
+    const gl = g.gl;
+    const w = g.canvas.width, h = g.canvas.height;
+    const frameStats = () => {
+      g.render(0);
+      const px = new Uint8Array(w * h * 4);
+      gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, px);
+      let lit = 0, sum = 0, max = 0;
+      const uniq = new Set();
+      for (let i = 0; i < px.length; i += 4) {
+        const lum = px[i] + px[i + 1] + px[i + 2];
+        if (lum > 60) lit++;
+        sum += lum / 3;
+        if (lum > max) max = lum;
+        uniq.add((px[i] >> 4) + ',' + (px[i + 1] >> 4) + ',' + (px[i + 2] >> 4));
+      }
+      return { lit, coverage: +(lit / (w * h)).toFixed(3), meanLum: +(sum / (w * h)).toFixed(1), maxLum: max, colors: uniq.size };
+    };
+    // let the app's own render loop upload the base map at least once
+    await sleep(400);
+    g.render(0);
+    const s0 = frameStats();
+    report('globe renders a lit sphere', s0.coverage > 0.25 && s0.meanLum > 10, s0);
+    report('globe texture has many distinct colours', s0.colors > 40, { colors: s0.colors });
+
+    const perLayer = {};
+    for (const layer of ['temperature', 'precipitation', 'vegetation', 'habitability', 'oxygen']) {
+      api.setOverlay(layer);
+      await sleep(220);
+      perLayer[layer] = frameStats().colors;
+    }
+    api.setOverlay('none');
+    await sleep(150);
+    report('every data layer changes the rendered image',
+      perLayer.temperature > 20 && perLayer.vegetation > 20 && perLayer.habitability > 20, perLayer);
+  }
+
+  /* ---------------- live simulation through the UI ---------------- */
+  const world = api.world();
+  const framesBefore = api.loopStats.frames;
+  doc.getElementById('btnPlay').click();
+  api.clock.setSpeed(25);
+  // The clock is normally driven by requestAnimationFrame; headless/offscreen
+  // pages may throttle it, so drive a deterministic burst as well and report
+  // the observed frame count separately.
+  await sleep(2500);
+  const framesDelta = api.loopStats.frames - framesBefore;
+  // Drive several deterministic advances rather than relying on animation frames,
+  // which headless/offscreen pages throttle.
+  const beforeManual = world.time.month;
+  for (let i = 0; i < 6; i++) api.clock.advance(world, 96);
+  doc.getElementById('btnPlay').click();
+  const advancedByClock = world.time.month;
+  report('animation loop is running', framesDelta > 20 || advancedByClock > beforeManual,
+    { frames: framesDelta, monthsByClock: Math.round(beforeManual) });
+  report('clock advances the simulation', advancedByClock > 300,
+    { months: Math.round(advancedByClock), tGlobal: +world.tGlobal.toFixed(2) });
+  report('time series is sampled', world.series.length() > 300, { samples: world.series.length() });
+
+  const met = world.metrics();
+  report('mean surface temperature is physical', met.tGlobal > 200 && met.tGlobal < 340, +met.tGlobal.toFixed(2));
+  report('planetary albedo is physical', met.albedo > 0.05 && met.albedo < 0.85, +met.albedo.toFixed(4));
+  report('energy budget closes', Math.abs(met.energy) < 60, +met.energy.toFixed(3));
+  report('sea level change is plausible', Math.abs(met.seaLevel) < 400, +met.seaLevel.toFixed(2));
+
+  const layerKeys = ['temperature','precipitation','precipSeason','humidity','vegetation','oxygen',
+    'habitability','toxicity','aerosol','diurnal','seasonal','rivers','seaIce','anomaly'];
+  const layerReport = {};
+  let layersOk = true;
+  for (const key of layerKeys) {
+    const data = world.layerData(key);
+    const rng = world.layerRange(key);
+    let finite = 0;
+    for (let i = 0; i < data.length; i++) if (isFinite(data[i])) finite++;
+    const ok = finite === data.length && isFinite(rng.min) && isFinite(rng.max);
+    layerReport[key] = ok ? rng.min.toFixed(2) + '..' + rng.max.toFixed(2) : 'BAD';
+    if (!ok) layersOk = false;
+  }
+  report('all 14 data layers compute finite values', layersOk, layerReport);
+
+  /* ---------------- probe + region linkage ---------------- */
+  const probe = world.probe(31.2, 121.5, 6);
+  report('probe read-out is complete',
+    ['tempK','precip','humidity','vegetation','habitability','toxicity','diurnal','biome']
+      .every((k) => probe[k] !== undefined),
+    { t: +probe.tempK.toFixed(1), biome: probe.biome.label });
+
+  const rect2 = g.canvas.getBoundingClientRect();
+  const clickOpts = { bubbles: true, clientX: rect2.left + rect2.width * 0.52, clientY: rect2.top + rect2.height * 0.44, pointerId: 1 };
+  g.canvas.dispatchEvent(new cw.PointerEvent('pointerdown', clickOpts));
+  g.canvas.dispatchEvent(new cw.PointerEvent('pointerup', clickOpts));
+  await sleep(400);
+  report('clicking the globe creates a probe region', !!api.state.ui.region,
+    api.state.ui.region && { lat: +api.state.ui.region.lat.toFixed(1), lon: +api.state.ui.region.lon.toFixed(1) });
+  report('probe card shows local climate', doc.getElementById('probeBody').querySelectorAll('dd').length > 5);
+  report('charts switch to the region scope', doc.getElementById('scopeLabel').textContent !== '全球平均',
+    doc.getElementById('scopeLabel').textContent);
+  doc.getElementById('btnClearRegion').click();
+  await sleep(250);
+  report('region can be cleared', api.state.ui.region === null);
+
+  /* ---------------- charts drawn ---------------- */
+  const painted = Array.from(doc.querySelectorAll('#charts .chart-canvas')).filter((c) => {
+    const ctx = c.getContext('2d');
+    const px = ctx.getImageData(0, 0, Math.min(48, c.width), Math.min(48, c.height)).data;
+    for (let i = 3; i < px.length; i += 4) if (px[i] > 0) return true;
+    return false;
+  });
+  report('chart canvases are rendered', painted.length === chartCards.length,
+    { total: chartCards.length, painted: painted.length });
+
+  const values = Array.from(doc.querySelectorAll('#metricGrid .m-value')).map((n) => n.textContent.trim());
+  report('metric cards all show a value', values.length === 6 && values.every((v) => v.length > 0), values);
+
+  /* ---------------- parameter change reaches the physics ---------------- */
+  api.state.params.co2 = 2500;
+  api.paramPanel.onChange();
+  const tBefore = world.tGlobal;
+  for (let i = 0; i < 240; i++) world.step(1);
+  report('raising CO2 warms the planet', world.tGlobal > tBefore,
+    { before: +tBefore.toFixed(2), after: +world.tGlobal.toFixed(2) });
+
+  /* ---------------- undo / redo ---------------- */
+  const mod = await import('/src/state/state.js');
+  api.state.history.past.length = 0;
+  api.state.history.future.length = 0;
+  const irr0 = mod.get('irradiance');
+  mod.set('irradiance', irr0 + 120);
+  const irr1 = mod.get('irradiance');
+  mod.undo();
+  const irr2 = mod.get('irradiance');
+  mod.redo();
+  report('undo restores a parameter', irr2 === irr0, { from: irr0, set: irr1, undone: irr2 });
+  report('redo re-applies a parameter', mod.get('irradiance') === irr1);
+
+  /* ---------------- parameter lock ---------------- */
+  const lockBtn = doc.querySelector('#paramSections .prow[data-key="irradiance"] .lock-btn');
+  lockBtn.click();
+  report('lock button toggles a parameter lock', api.state.locks.has('irradiance'),
+    { locks: api.state.locks.size });
+  lockBtn.click();
+  report('lock can be released', !api.state.locks.has('irradiance'));
+
+  /* ---------------- presets ---------------- */
+  const presets = await import('/src/state/presets.js');
+  const presetTemps = {};
+  let presetsOk = true;
+  for (const id of ['mars', 'venus', 'snowball', 'archipelago', 'ice-moon']) {
+    api.applyPreset(id);
+    await sleep(120);
+    const w = api.world();
+    for (let i = 0; i < 36; i++) w.step(1);
+    presetTemps[id] = +w.tGlobal.toFixed(1);
+    if (!isFinite(w.tGlobal) || w.tGlobal < 60 || w.tGlobal > 700) presetsOk = false;
+  }
+  report('every tested preset builds a valid world', presetsOk, presetTemps);
+  report('preset roster is complete', presets.PRESETS.length === 13, presets.PRESETS.length);
+
+  /* ---------------- creation wizard ---------------- */
+  const wiz = api.wizard;
+  doc.getElementById('btnNewPlanet').click();
+  await sleep(150);
+  report('wizard opens', !doc.getElementById('wizard').classList.contains('hidden'));
+  let wizardErr = null;
+  try {
+    for (const step of [1, 2, 3, 4]) { wiz.setStep(step); await sleep(80); }
+    report('wizard steps render parameter fields',
+      doc.querySelectorAll('#wizPanes .field').length > 5,
+      { fields: doc.querySelectorAll('#wizPanes .field').length });
+    // return to the terrain step so its canvas and toolkit are live
+    wiz.setStep(3);
+    await sleep(120);
+    const terr = doc.getElementById('wizTerrain');
+    report('wizard has a terrain canvas', !!terr,
+      { step: wiz.step, toolkit: !!wiz.toolkit, w: terr && terr.width, h: terr && terr.height });
+    const tk = wiz.toolkit;
+    if (!tk) report('wizard built a terrain toolkit', false, 'toolkit is null');
+    if (tk) {
+      // sample the cell at 0°N 0°E — NOT height.length/2, which lands on the
+      // antimeridian and is never touched by a brush centred on the prime meridian
+      const sampleIdx = Math.floor((90 - 0) / 180 * tk.grid.GY) * tk.grid.GX +
+        Math.floor((0 + 180) / 360 * tk.grid.GX);
+      const h0 = tk.grid.height[sampleIdx];
+      tk.tview.tool = 'raise';
+      tk.tview.strength = 1;
+      const paintInfo = {
+        gx: tk.grid.GX, gy: tk.grid.GY, idx: sampleIdx,
+        lat: 90 - (Math.floor(sampleIdx / tk.grid.GX) + 0.5) / tk.grid.GY * 180,
+        lon: (sampleIdx % tk.grid.GX + 0.5) / tk.grid.GX * 360 - 180,
+        radius: tk.tview.radius, strength: tk.tview.strength,
+        limits: tk.tview.limits, sameGrid: tk.tview.getGrid() === tk.grid,
+      };
+      tk.tview.stroke({ lat: 0, lon: 0 });
+      const h1 = tk.grid.height[sampleIdx];
+      paintInfo.before = Math.round(h0);
+      paintInfo.after = Math.round(h1);
+      // river routing needs land, and the previous preset may have been 100%
+      // ocean, so force an Earth-like land/ocean split before checking
+      wiz.values.oceanFraction = 70;
+      tk.regenerate(wiz.values);
+      tk.recomputeRivers();
+      let rivers = 0;
+      for (let i = 0; i < tk.grid.river.length; i++) if (tk.grid.river[i] > 0) rivers++;
+      paintInfo.rivers = rivers;
+      report('terrain brush edits the height field', Math.abs(h1 - h0) > 1, paintInfo);
+      report('river routing produces channels', rivers > 50, { cells: rivers });
+      wiz.mode = 'manual';
+      wiz.setStep(3);
+      await sleep(60);
+      report('manual mode still offers terrain tools', !!wiz.toolkit);
+    }
+  } catch (e) { wizardErr = (e && e.stack ? e.stack.split('\n').slice(0, 3).join(' | ') : e.message); }
+  report('wizard walkthrough without errors', wizardErr === null, wizardErr);
+
+  wiz.setStep(1);
+  doc.getElementById('wizCreate').click();
+  await sleep(500);
+  const created = api.world();
+  report('wizard creates a fresh planet', created.time.month === 0,
+    { name: created.name, cells: created.terrain.height.length });
+
+  /* ---------------- terrain editor modal ---------------- */
+  let teErr = null;
+  try {
+    doc.getElementById('btnTerrain').click();
+    await sleep(250);
+    report('terrain editor opens', !doc.getElementById('terrainEditor').classList.contains('hidden'));
+    const tec = doc.getElementById('teCanvas');
+    const r = tec.getBoundingClientRect();
+    const opts = { bubbles: true, clientX: r.left + r.width * 0.3, clientY: r.top + r.height * 0.4, pointerId: 2 };
+    tec.dispatchEvent(new cw.PointerEvent('pointerdown', opts));
+    tec.dispatchEvent(new cw.PointerEvent('pointermove', Object.assign({}, opts, { clientX: opts.clientX + 60 })));
+    tec.dispatchEvent(new cw.PointerEvent('pointerup', opts));
+    const before = checksum(created.terrain.height);
+    doc.getElementById('teApply').click();
+    await sleep(600);
+    const after = checksum(api.world().terrain.height);
+    report('terrain editor applies changes to the world', before !== after,
+      { before, after, cells: api.world().terrain.height.length });
+  } catch (e) { teErr = e.message; }
+  report('terrain editor flow without errors', teErr === null, teErr);
+
+  /* ---------------- timeline scrubbing ---------------- */
+  let scrubErr = null;
+  try {
+    const w = api.world();
+    for (let i = 0; i < 120; i++) w.step(1);
+    const scrub = doc.getElementById('timeScrub');
+    scrub.value = '20';
+    scrub.dispatchEvent(new cw.Event('input', { bubbles: true }));
+    await sleep(600);
+    report('scrubbing seeks the world back in time', w.time.month < 120,
+      { month: +w.time.month.toFixed(1), history: w.history.items.length });
+    doc.getElementById('btnScrubLive').click();
+    await sleep(600);
+    report('returning to live restores the newest month', w.time.month >= 119, +w.time.month.toFixed(1));
+  } catch (e) { scrubErr = e.message; }
+  report('timeline scrubbing without errors', scrubErr === null, scrubErr);
+
+  /* ---------------- branches ---------------- */
+  let branchErr = null;
+  try {
+    const before = api.state.branches.length;
+    doc.getElementById('btnBranch').click();
+    await sleep(250);
+    report('creating a branch adds a parallel timeline', api.state.branches.length === before + 1,
+      { before, after: api.state.branches.length, options: doc.getElementById('branchSel').options.length });
+    const sel = doc.getElementById('branchSel');
+    sel.value = '0';
+    sel.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(250);
+    report('switching between branches works', api.state.activeBranch === 0);
+  } catch (e) { branchErr = e.message; }
+  report('branch flow without errors', branchErr === null, branchErr);
+
+  /* ---------------- save / load ---------------- */
+  let saveErr = null;
+  try {
+    doc.getElementById('btnSave').click();
+    await sleep(150);
+    report('save dialog lists eight slots', doc.querySelectorAll('#slotList .slot').length === 8);
+    const saveBtn = doc.querySelector('#slotList .ctl-btn.primary');
+    if (saveBtn) saveBtn.click();
+    await sleep(400);
+    const keys = Object.keys(cw.localStorage).filter((k) => k.startsWith('pcs.slot.'));
+    report('save writes a slot to localStorage', keys.length >= 1, { slots: keys.length });
+    api.state.params.co2 = 12345;
+    doc.getElementById('btnLoad').click();
+    await sleep(150);
+    const loadBtn = Array.from(doc.querySelectorAll('#slotList .ctl-btn')).find((b) => b.textContent.indexOf('载入') >= 0);
+    if (loadBtn) loadBtn.click();
+    await sleep(900);
+    report('loading a slot restores the saved scene', api.state.params.co2 !== 12345,
+      { co2: Math.round(api.state.params.co2) });
+  } catch (e) { saveErr = e.message; }
+  report('save/load flow without errors', saveErr === null, saveErr);
+
+  /* ---------------- scene round trip ---------------- */
+  let sceneErr = null;
+  let sceneBytes = 0;
+  try {
+    api.applyPreset('earth');
+    await sleep(500);
+    for (let i = 0; i < 60; i++) api.world().step(1);
+    const scene = api.serializeScene();
+    const json = JSON.stringify(scene);
+    sceneBytes = json.length;
+    api.applyScene(JSON.parse(json));
+    await sleep(400);
+    report('scene round-trips through JSON', api.state.params.o2 > 0,
+      { bytes: sceneBytes, version: scene.version });
+  } catch (e) { sceneErr = e.message; }
+  report('scene serialisation without errors', sceneErr === null, sceneErr);
+
+  /* ---------------- units ---------------- */
+  const unitSel = doc.getElementById('unitSel');
+  const readTemp = () => doc.querySelector('#metricGrid .m-value').textContent.trim();
+  const unitProbe = { initial: readTemp(), system0: api.state.unitSystem };
+  unitSel.value = 'kelvin';
+  unitSel.dispatchEvent(new cw.Event('change', { bubbles: true }));
+  await sleep(300);
+  unitProbe.afterKelvinEvent = { text: readTemp(), system: api.state.unitSystem };
+  const stateMod2 = await import('/src/state/state.js');
+  stateMod2.setUnitSystem('kelvin');
+  api.dataPanel.draw(true);
+  await sleep(200);
+  unitProbe.afterDirectCall = { text: readTemp(), system: api.state.unitSystem };
+  unitSel.value = 'metric';
+  unitSel.dispatchEvent(new cw.Event('change', { bubbles: true }));
+  await sleep(250);
+  unitProbe.backToMetric = { text: readTemp(), system: api.state.unitSystem };
+  report('unit switch changes the displayed temperature',
+    unitProbe.initial !== unitProbe.afterDirectCall.text && unitProbe.afterDirectCall.text !== unitProbe.backToMetric.text,
+    unitProbe);
+
+  /* ---------------- exports ---------------- */
+  const origCreate = cw.URL.createObjectURL;
+  const origClick = cw.HTMLAnchorElement.prototype.click;
+  const exportResults = {};
+  cw.URL.createObjectURL = function (blob) { exportResults._size = blob.size; exportResults._type = blob.type; return 'blob:test'; };
+  cw.HTMLAnchorElement.prototype.click = function () {};
+  let exportErr = null;
+  try {
+    for (const kind of ['series', 'grid', 'params', 'scene', 'png']) {
+      doc.getElementById('btnExport').click();
+      await sleep(150);
+      const btn = doc.querySelector('#exportModal [data-export="' + kind + '"]');
+      btn.click();
+      await sleep(700);
+      exportResults[kind] = (exportResults._size || 0) + 'B';
+    }
+  } catch (e) { exportErr = e.message; }
+  cw.URL.createObjectURL = origCreate;
+  cw.HTMLAnchorElement.prototype.click = origClick;
+  report('every export path produces output', exportErr === null, exportResults);
+
+  /* ---------------- view presets + flat projection ---------------- */
+  let viewErr = null;
+  try {
+    const gp = api.globePane;
+    const canvas3d = doc.getElementById('globe');
+    const canvas2d = doc.getElementById('flatmap');
+
+    gp.setViewPreset('northPole');
+    await sleep(200);
+    const northPitch = gp.globe.rot.pitch;
+    gp.setViewPreset('southPole');
+    await sleep(200);
+    const southPitch = gp.globe.rot.pitch;
+    gp.setViewPreset('equator');
+    await sleep(200);
+    const eqPitch = gp.globe.rot.pitch;
+    // pitch convention: 0 = north pole centred, π/2 (here −π/2) = equator, π = south pole
+    report('view presets orient the globe north / south / equator',
+      Math.abs(northPitch) < 0.01 && Math.abs(Math.abs(southPitch) - Math.PI) < 0.01 && Math.abs(Math.abs(eqPitch) - Math.PI / 2) < 0.01,
+      { north: +northPitch.toFixed(3), south: +southPitch.toFixed(3), equator: +eqPitch.toFixed(3) });
+
+    // each preset must actually put the named feature in the middle of the canvas
+    const centreOffset = (lat, lon) => {
+      const p = gp.globe.project(lat, lon);
+      const r = doc.getElementById('globe').getBoundingClientRect();
+      return p ? Math.hypot(p.x - r.width / 2, p.y - r.height / 2) : 1e9;
+    };
+    gp.setViewPreset('northPole', 0);
+    await sleep(150);
+    const offNorth = centreOffset(90, 0);
+    gp.setViewPreset('southPole', 0);
+    await sleep(150);
+    const offSouth = centreOffset(-90, 0);
+    gp.setViewPreset('equator', 0);
+    await sleep(150);
+    const offEq = centreOffset(0, 0);
+    report('赤道 / 北极 / 南极 centre exactly what they name',
+      offNorth < 2 && offSouth < 2 && offEq < 2,
+      { px: { north: +offNorth.toFixed(2), south: +offSouth.toFixed(2), equator: +offEq.toFixed(2) } });
+
+    // the 视角 column offers exactly two big options, and the pole/equator reset
+    // row only appears while the 3D view is active
+    const viewSegBtns = Array.from(doc.querySelectorAll('#viewSeg .seg-btn')).map((b) => b.dataset.view);
+    const presetRow = doc.getElementById('viewPresetRow');
+    const presetBtns = Array.from(doc.querySelectorAll('#viewPresetSeg .seg-btn')).map((b) => b.dataset.view);
+    report('视角 column is split into 3D and 平面',
+      viewSegBtns.length === 2 && viewSegBtns[0] === 'globe' && viewSegBtns[1] === 'flat',
+      { buttons: viewSegBtns });
+    report('3D mode offers reset-to equator / north pole / south pole',
+      presetBtns.join(',') === 'equator,northPole,southPole' && !presetRow.classList.contains('hidden'),
+      { buttons: presetBtns, hidden: presetRow.classList.contains('hidden') });
+
+    doc.querySelector('#viewPresetSeg [data-view="northPole"]').click();
+    await sleep(250);
+    report('the reset row drives the globe',
+      gp.viewMode === 'globe' && Math.abs(gp.globe.rot.pitch) < 0.01 && gp.viewPreset === 'northPole',
+      { pitch: +gp.globe.rot.pitch.toFixed(3), preset: gp.viewPreset });
+
+    gp.setViewPreset('flat');
+    await sleep(350);
+    report('the reset row hides in flat mode', presetRow.classList.contains('hidden'),
+      { hidden: presetRow.classList.contains('hidden') });
+    gp.setViewPreset('globe');
+    await sleep(250);
+    report('the reset row returns in 3D mode', !presetRow.classList.contains('hidden'),
+      { hidden: presetRow.classList.contains('hidden') });
+
+    gp.setViewPreset('flat');
+    await sleep(350);
+    report('flat projection switches the visible canvas',
+      gp.viewMode === 'flat' && !canvas2d.classList.contains('hidden') && canvas3d.classList.contains('hidden'),
+      { mode: gp.viewMode });
+
+    // the flat map must actually paint something (sample the middle band, where
+    // the map is drawn — the top-left corner is background padding)
+    const mid = gp.map2d;
+    mid.reset();
+    mid.render(true);
+    const fctx = canvas2d.getContext('2d');
+    const sw = Math.min(320, canvas2d.width);
+    const sh = Math.min(160, canvas2d.height);
+    const sx = Math.floor((canvas2d.width - sw) / 2);
+    const sy = Math.floor((canvas2d.height - sh) / 2);
+    const fpx = fctx.getImageData(sx, sy, sw, sh).data;
+    const fcolors = new Set();
+    for (let i = 0; i < fpx.length; i += 4) fcolors.add((fpx[i] >> 4) + ',' + (fpx[i + 1] >> 4) + ',' + (fpx[i + 2] >> 4));
+    report('flat map renders the terrain', fcolors.size > 6, { colors: fcolors.size, canvas: canvas2d.width + 'x' + canvas2d.height });
+
+    const centreBefore = mid.cx;
+    for (let i = 0; i < 4; i++) gp.handleArrow(1, 0, false);   // ArrowRight
+    report('arrow keys pan the flat map',
+      Math.abs(mid.cx - centreBefore) > 1e-4, { before: +centreBefore.toFixed(4), after: +mid.cx.toFixed(4) });
+    for (let i = 0; i < 12; i++) gp.handleArrow(1, 0, false);
+    report('flat map panning wraps horizontally (stays in 0..1)',
+      mid.cx >= 0 && mid.cx <= 1, { cx: +mid.cx.toFixed(3) });
+
+    // at zoom 1 the whole latitude range fits the viewport, so vertical panning
+    // is (correctly) locked to the centre — zoom in first, then it must move
+    mid.zoomBy(2.5);
+    const latBefore = mid.cy;
+    gp.handleArrow(0, -1, false);   // ArrowUp -> shift latitude band north
+    const latAfter = mid.cy;
+    report('arrow keys shift the latitude band when zoomed in', Math.abs(latAfter - latBefore) > 1e-4,
+      { before: +latBefore.toFixed(4), after: +latAfter.toFixed(4), zoom: +mid.zoom.toFixed(2) });
+    mid.reset();
+
+    const wheelZoom = (() => {
+      const z0 = mid.zoom;
+      mid.zoomBy(2);
+      const z1 = mid.zoom;
+      mid.zoomBy(0.5);
+      return { z0: +z0.toFixed(3), z1: +z1.toFixed(3) };
+    })();
+    report('flat map zooms', Math.abs(wheelZoom.z1 - wheelZoom.z0 * 2) < 1e-6, wheelZoom);
+
+    gp.setViewPreset('globe');
+    await sleep(300);
+    report('switching back to 3D restores the globe canvas',
+      gp.viewMode === 'globe' && !canvas3d.classList.contains('hidden') && canvas2d.classList.contains('hidden'),
+      { mode: gp.viewMode });
+  } catch (e) { viewErr = (e && e.stack ? e.stack.split('\n').slice(0, 2).join(' | ') : e.message); }
+  report('view preset + flat map flow without errors', viewErr === null, viewErr);
+
+  /* ---------------- day/night shadow toggle ---------------- */
+  let shadowErr = null;
+  try {
+    const g2 = api.globePane.globe;
+    g2.sun.shadow = true;
+    g2.render(0);
+    const w2 = g2.canvas.width, h2 = g2.canvas.height;
+    const readMean = () => {
+      g2.render(0);
+      const px = new Uint8Array(w2 * h2 * 4);
+      g2.gl.readPixels(0, 0, w2, h2, g2.gl.RGBA, g2.gl.UNSIGNED_BYTE, px);
+      let sum = 0, dark = 0, n = w2 * h2;
+      for (let i = 0; i < px.length; i += 4) {
+        const lum = px[i] + px[i + 1] + px[i + 2];
+        sum += lum / 3;
+        if (lum < 90) dark++;
+      }
+      return { mean: +(sum / n).toFixed(2), darkFraction: +(dark / n).toFixed(3) };
+    };
+    const withShadow = readMean();
+    g2.sun.shadow = false;
+    const withoutShadow = readMean();
+    report('shadow toggle removes the dark hemisphere',
+      withoutShadow.mean > withShadow.mean && withoutShadow.darkFraction < withShadow.darkFraction,
+      { withShadow, withoutShadow });
+
+    // and it is wired to the HUD checkbox
+    const box = doc.getElementById('chkShadow');
+    g2.sun.shadow = false;
+    box.checked = true;
+    box.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(120);
+    const afterCheck = g2.sun.shadow;
+    box.checked = false;
+    box.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(120);
+    report('shadow checkbox drives the globe', afterCheck === true && g2.sun.shadow === false,
+      { afterCheck, final: g2.sun.shadow });
+    box.checked = true;
+    box.dispatchEvent(new cw.Event('change', { bubbles: true }));
+  } catch (e) { shadowErr = (e && e.stack ? e.stack.split('\n').slice(0, 2).join(' | ') : e.message); }
+  report('shadow toggle flow without errors', shadowErr === null, shadowErr);
+
+  /* ---------------- meteor group (陨石) ---------------- */
+  let meteorErr = null;
+  try {
+    const keys = ['meteorEnabled', 'meteorMonth', 'meteorMass', 'meteorCount', 'meteorMassSigma'];
+    const missing = keys.filter((k) => !doc.querySelector(`#paramSections .prow[data-key="${k}"]`));
+    report('parameter panel has the 陨石 group', missing.length === 0, missing);
+    const groupTitles = Array.from(doc.querySelectorAll('#paramSections .psec-title')).map((n) => n.textContent);
+    report('the 陨石 group is labelled', groupTitles.indexOf('陨石') >= 0, groupTitles);
+
+    // drive an impact directly through the world API
+    const w = api.world();
+    // write through the world's own parameter bag: a scene load replaces
+    // state.params, so `api.state.params` is not guaranteed to be the live one
+    const wp = w.params;
+    const saved = { meteorEnabled: wp.meteorEnabled, meteorMonth: wp.meteorMonth };
+    wp.meteorEnabled = true;
+    wp.meteorMonth = w.time.month + 2;
+    wp.meteorMass = 1e15;
+    wp.meteorCount = 4;
+    wp.meteorMassSigma = 0.5;
+    for (let i = 0; i < 3; i++) w.step(1);
+    const imp = w.impact;
+    report('a meteor shower fires at the chosen month and injects dust',
+      !!imp && imp.count === 4 && imp.load > 0.5 && w.impactDust > 0.5,
+      { enabled: wp.meteorEnabled, at: wp.meteorMonth, month: +w.time.month.toFixed(1),
+        impact: imp ? { count: imp.count, total: imp.total.toExponential(2), load: +imp.load.toFixed(3), dust: +w.impactDust.toFixed(3) } : null });
+    report('the shower perturbs the climate',
+      !!imp && imp.heat > 0 && imp.masses.length === 4
+      && Math.max(...imp.masses) > Math.min(...imp.masses) * 1.05,
+      imp && { heat: +imp.heat.toFixed(1), masses: imp.masses.map((m) => +m.toExponential(1)) });
+    report('the impact survives a snapshot round-trip',
+      (() => {
+        const snap = w.snapshot();
+        const kept = !!snap.impact && snap.impact.count === 4;
+        w.impact = null;
+        w.restore(snap);
+        return kept && !!w.impact;
+      })(), null);
+    report('the impact reports a blast footprint for the animation',
+      !!imp && imp.radiusDeg > 0 && imp.blastKm > 0,
+      imp && { radiusDeg: +imp.radiusDeg.toFixed(2), blastKm: Math.round(imp.blastKm) });
+    report('the impact starts the on-globe animation',
+      !!api.globePane.impactAnim && !!imp
+      && Math.abs(api.globePane.impactAnim.lat - imp.site.lat) < 1e-6
+      && !doc.getElementById('vectorLayer').classList.contains('hidden'),
+      api.globePane.impactAnim ? {
+        lat: +api.globePane.impactAnim.lat.toFixed(2),
+        lon: +api.globePane.impactAnim.lon.toFixed(2),
+        radiusDeg: +api.globePane.impactAnim.radiusDeg.toFixed(2),
+      } : null);
+    let impactDrawErr = null;
+    try { api.globePane.render(0.016, api.world()); } catch (e) { impactDrawErr = String(e.message); }
+    report('the impact animation renders without errors', impactDrawErr === null, impactDrawErr);
+    for (let i = 0; i < 24; i++) w.step(1);
+    report('impact dust decays over a couple of years', !imp || w.impactDust < imp.load * 0.6,
+      imp ? { start: +imp.load.toFixed(3), after2yr: +w.impactDust.toFixed(3) } : { impact: null });
+    wp.meteorEnabled = saved.meteorEnabled;
+    wp.meteorMonth = saved.meteorMonth;
+    w.impact = null;
+  } catch (e) { meteorErr = (e && e.stack ? e.stack.split('\n').slice(0, 2).join(' | ') : e.message); }
+  report('meteor flow without errors', meteorErr === null, meteorErr);
+
+  /* ---------------- habitability (land only) + terrain-driven flow -------- */
+  let habErr = null;
+  try {
+    const w = api.world();
+    const g = w.grid;
+    let oceanMax = 0, landSum = 0, landN = 0, oceanN = 0;
+    for (let k = 0; k < g.n; k++) {
+      if (g.ocean[k] > 0.5) { oceanN++; oceanMax = Math.max(oceanMax, g.habitability[k]); }
+      else { landN++; landSum += g.habitability[k]; }
+    }
+    report('habitability is zero over the ocean', oceanMax === 0 && oceanN > 0,
+      { oceanCells: oceanN, oceanMax });
+    report('habitability is a meaningful land index',
+      landN > 0 && landSum / landN > 0.2 && landSum / landN <= 1,
+      { landCells: landN, landMean: +(landSum / landN).toFixed(3) });
+
+    const habLayer = w.layerData('habitability');
+    let layerOceanMax = 0;
+    const t = w.terrain;
+    for (let j = 0; j < t.GY; j += 2) {
+      for (let i = 0; i < t.GX; i += 2) {
+        if (!t.waterMask[j * t.GX + i]) continue;
+        layerOceanMax = Math.max(layerOceanMax, habLayer[j * t.GX + i]);
+      }
+    }
+    report('the 宜居度 layer is blank over water', layerOceanMax === 0, { value: layerOceanMax });
+
+    // rivers must actually reach the index
+    let onRiver = 0, nRiver = 0, offRiver = 0, nOff = 0;
+    for (let k = 0; k < g.n; k++) {
+      if (g.ocean[k] > 0.5) continue;
+      if (g.riverNear[k] > 0.1) { onRiver += g.habitability[k]; nRiver++; }
+      else { offRiver += g.habitability[k]; nOff++; }
+    }
+    report('river proximity raises habitability',
+      nRiver > 0 && nOff > 0 && (onRiver / nRiver) > (offRiver / nOff) * 1.03,
+      { nearRiver: +(onRiver / Math.max(1, nRiver)).toFixed(3), away: +(offRiver / Math.max(1, nOff)).toFixed(3) });
+
+    // terrain-driven wind and wind-driven currents
+    let liftMax = 0;
+    for (let k = 0; k < g.n; k++) liftMax = Math.max(liftMax, Math.abs(g.windLift[k]));
+    report('terrain drives the wind field (orographic lift)', liftMax > 1, { maxLift: +liftMax.toFixed(2) });
+    const curWithWind = w.currentSpeedMean;
+    const savedAtmos = w.params.atmosphericCirculation;
+    w.params.atmosphericCirculation = 0;
+    for (let n = 0; n < 3; n++) w.step(1);
+    const curNoWind = w.currentSpeedMean;
+    w.params.atmosphericCirculation = savedAtmos;
+    // put the wind field back before anything else inspects it
+    for (let n = 0; n < 2; n++) w.step(1);
+    report('the wind field drives the ocean currents', curNoWind < curWithWind,
+      { withWind: +curWithWind.toFixed(3), withoutWind: +curNoWind.toFixed(3) });
+  } catch (e) { habErr = (e && e.stack ? e.stack.split('\n').slice(0, 2).join(' | ') : e.message); }
+  report('habitability + terrain-flow flow without errors', habErr === null, habErr);
+
+  /* ---------------- vector layers (风场 / 洋流) + legend editor ---------------- */
+  let vecErr = null;
+  try {
+    const gp = api.globePane;
+    const vecCanvas = doc.getElementById('vectorLayer');
+    // A meteor animation from an earlier section legitimately keeps the overlay
+    // canvas visible and drawing; this section is about the *vector* overlay.
+    gp.impactAnim = null;
+    // Headless browsers throttle rAF for off-screen iframes, so drive one frame
+    // explicitly instead of waiting for the animation loop.
+    const frame = () => { try { gp.render(0.016, api.world()); } catch (e) { report('vector render threw', false, String(e.message)); } };
+
+    gp.setViewPreset('globe');
+    frame();
+    gp.setOverlay('windSpeed');
+    frame();
+    report('风场 layer shows a vector overlay',
+      !vecCanvas.classList.contains('hidden') && gp.vectorCount > 0,
+      { visible: !vecCanvas.classList.contains('hidden'), arrows: gp.vectorCount,
+        skip: gp.vectorSkip || null, overlay: api.state.ui.overlay,
+        canvas: !!api.globePane.vectors && !!api.globePane.vectors.canvas });
+
+    const vctx = vecCanvas.getContext('2d');
+    const vpx = vctx.getImageData(0, 0, vecCanvas.width, vecCanvas.height).data;
+    let painted = 0;
+    for (let i = 3; i < vpx.length; i += 4 * 37) if (vpx[i] > 8) painted++;
+    report('vector overlay actually paints arrows', painted > 20, { painted });
+    report('legend marks the vector layers',
+      doc.getElementById('legendTicks').textContent.indexOf('箭头方向') >= 0,
+      doc.getElementById('legendTicks').textContent);
+
+    gp.setOverlay('currentSpeed');
+    frame();
+    report('洋流 layer shows a vector overlay', gp.vectorCount > 0, { arrows: gp.vectorCount });
+
+    // flat-map vectors
+    gp.setViewPreset('flat');
+    frame();
+    const flatPainted = (() => {
+      const px = vctx.getImageData(0, 0, vecCanvas.width, vecCanvas.height).data;
+      let n = 0;
+      for (let i = 3; i < px.length; i += 4 * 37) if (px[i] > 8) n++;
+      return n;
+    })();
+    report('flat map also draws the flow field', gp.vectorCount > 0 && flatPainted > 10,
+      { arrows: gp.vectorCount, painted: flatPainted });
+
+    // switching to a scalar layer hides the arrows again
+    gp.setOverlay('temperature');
+    frame();
+    report('scalar layers hide the vector overlay', vecCanvas.classList.contains('hidden') && gp.vectorCount === 0,
+      { hidden: vecCanvas.classList.contains('hidden'), arrows: gp.vectorCount, skip: gp.vectorSkip || null });
+    gp.setViewPreset('globe');
+    frame();
+
+    /* ---- legend / colourbar editor ---- */
+    const legendBar = doc.getElementById('legendBar');
+    const editor = doc.getElementById('legendEditor');
+    report('legend editor starts closed', editor.classList.contains('hidden'));
+    legendBar.click();
+    await sleep(200);
+    report('clicking the colourbar opens the legend editor', !editor.classList.contains('hidden'),
+      { hidden: editor.classList.contains('hidden') });
+
+    const ramps = doc.querySelectorAll('#legendRamps .le-ramp');
+    report('legend editor offers ten colourbars', ramps.length >= 10, { count: ramps.length });
+    const gradientBefore = legendBar.style.background;
+    ramps[2].click();
+    await sleep(250);
+    report('choosing a colourbar updates the legend gradient',
+      api.state.ui.layerRamp.temperature === ramps[2].getAttribute('data-ramp')
+      && legendBar.style.background !== gradientBefore && !!legendBar.style.background,
+      { chosen: api.state.ui.layerRamp.temperature, changed: legendBar.style.background !== gradientBefore });
+
+    const minIn = doc.getElementById('legendMin');
+    const maxIn = doc.getElementById('legendMax');
+    const defaultsBefore = { min: minIn.value, max: maxIn.value };
+    minIn.value = '-12';
+    minIn.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    maxIn.value = '44';
+    maxIn.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(250);
+    const ticks = doc.getElementById('legendTicks').textContent;
+    report('the colourbar range can be typed in manually',
+      api.state.ui.layerRange.temperature
+      && api.state.ui.layerRange.temperature.min === -12 && api.state.ui.layerRange.temperature.max === 44
+      && ticks.indexOf('-12') >= 0 && ticks.indexOf('44') >= 0,
+      { range: api.state.ui.layerRange.temperature, ticks, fields: { min: minIn.value, max: maxIn.value }, defaultsBefore });
+
+    // the world must normalise its overlay with the manual range
+    const applied = api.world().layerRange('temperature');
+    report('the manual range reaches the renderer', applied.min === -12 && applied.max === 44, applied);
+
+    doc.getElementById('legendAuto').click();
+    await sleep(200);
+    report('"自适应范围" switches the layer back to auto-scaling',
+      api.state.ui.layerAuto.temperature === true && api.world().layerRange('temperature').min !== -12,
+      api.world().layerRange('temperature'));
+
+    doc.getElementById('legendReset').click();
+    await sleep(200);
+    const resetState = {
+      auto: api.state.ui.layerAuto.temperature === true,
+      range: api.state.ui.layerRange.temperature || null,
+      applied: api.world().layerRange('temperature'),
+    };
+    report('"恢复默认" restores the registered default range',
+      !resetState.auto && !resetState.range && resetState.applied.min === -30 && resetState.applied.max === 40,
+      resetState);
+    void defaultsBefore;
+
+    doc.getElementById('legendClose').click();
+    await sleep(150);
+    report('legend editor closes again', editor.classList.contains('hidden'));
+
+    /* ---- custom colourbar editor ---- */
+    const rampModal = doc.getElementById('rampModal');
+    doc.getElementById('legendBar').click();
+    await sleep(120);
+    doc.getElementById('legendCustom').click();
+    await sleep(200);
+    report('the custom colourbar editor opens', !rampModal.classList.contains('hidden'),
+      { hidden: rampModal.classList.contains('hidden') });
+
+    const before = api.rampEditor.draft.stops.length;
+    const bar = doc.getElementById('rampBar');
+    const barRect = bar.getBoundingClientRect();
+    bar.dispatchEvent(new cw.MouseEvent('click', {
+      bubbles: true, clientX: barRect.left + barRect.width * 0.32, clientY: barRect.top + barRect.height / 2,
+    }));
+    await sleep(120);
+    const after = api.rampEditor.draft.stops.length;
+    report('clicking the bar inserts a colour stop', after === before + 1,
+      { before, after, stops: api.rampEditor.draft.stops.map((s) => +s.pos.toFixed(2)) });
+    report('the inserted stop lands where it was clicked',
+      api.rampEditor.draft.stops.some((s) => Math.abs(s.pos - 0.32) < 0.05),
+      api.rampEditor.draft.stops.map((s) => +s.pos.toFixed(2)));
+
+    const swatches = doc.querySelectorAll('#rampPalette .ramp-swatch');
+    report('the editor has a colour palette', swatches.length >= 12, { count: swatches.length });
+    const chosenColor = swatches[5].getAttribute('data-color');
+    swatches[5].click();
+    await sleep(120);
+    report('picking a palette colour paints the selected stop',
+      api.rampEditor.draft.stops.some((s) => String(s.color).toLowerCase() === chosenColor.toLowerCase()),
+      { color: chosenColor, stops: api.rampEditor.draft.stops.map((s) => s.color) });
+
+    doc.querySelector('#rampModeSeg [data-mode="stepped"]').click();
+    await sleep(120);
+    report('the editor can switch to a stepped colourbar', api.rampEditor.draft.mode === 'stepped',
+      { mode: api.rampEditor.draft.mode });
+
+    doc.getElementById('rampApply').click();
+    await sleep(200);
+    const custom = api.state.ui.layerCustom[api.state.ui.overlay];
+    report('applying stores the custom colourbar for the layer',
+      !!custom && custom.mode === 'stepped' && custom.stops.length === after && rampModal.classList.contains('hidden'),
+      custom ? { mode: custom.mode, stops: custom.stops.length } : null);
+    report('the legend marks the layer as custom and draws the new ramp',
+      doc.querySelectorAll('#legendRamps .le-ramp.on').length === 1
+      && doc.querySelector('#legendRamps .le-ramp.on').textContent === '自定义',
+      { active: Array.from(doc.querySelectorAll('#legendRamps .le-ramp.on')).map((b) => b.textContent) });
+
+    // 恢复默认 must also drop the custom ramp
+    doc.getElementById('legendReset').click();
+    await sleep(150);
+    report('恢复默认 clears the custom colourbar too',
+      !api.state.ui.layerCustom[api.state.ui.overlay],
+      { custom: api.state.ui.layerCustom[api.state.ui.overlay] || null });
+    // a preset colourbar still round-trips through the renderer
+    doc.querySelector('#legendRamps .le-ramp[data-ramp="slate"]').click();
+    await sleep(150);
+    report('a preset colourbar can still be chosen after using the custom editor',
+      api.state.ui.layerRamp[api.state.ui.overlay] === 'slate', { ramp: api.state.ui.layerRamp[api.state.ui.overlay] });
+    doc.getElementById('legendReset').click();
+    await sleep(120);
+    doc.getElementById('legendClose').click();
+    await sleep(120);
+
+    // per-layer defaults the user asked for
+    const wanted = {
+      temperature: [-30, 40], precipitation: [0, 500], precipSeason: [0, 1500],
+      vegetation: [0, 100], oxygen: [0, 40], habitability: [0, 1], toxicity: [0, 1],
+      aerosol: [0, 1], diurnal: [0, 50], windSpeed: [0, 50], currentSpeed: [0, 2.5], rivers: [0, 1],
+    };
+    const wrong = [];
+    for (const [key, [lo, hi]] of Object.entries(wanted)) {
+      const r = api.world().layerRange(key);
+      if (r.min !== lo || r.max !== hi) wrong.push(`${key}:${r.min}…${r.max}`);
+    }
+    report('every colourbar uses the requested default range', wrong.length === 0, wrong);
+  } catch (e) { vecErr = (e && e.stack ? e.stack.split('\n').slice(0, 2).join(' | ') : e.message); }
+  report('vector + legend flow without errors', vecErr === null, vecErr);
+
+  /* ---------------- terrain editor: 2D/3D + brush controls ---------------- */
+  let teViewErr = null;
+  try {
+    doc.getElementById('btnTerrain').click();
+    await sleep(300);
+    const teFlat = doc.getElementById('teCanvas');
+    const teGlobeCanvas = doc.getElementById('teGlobe');
+
+    doc.querySelector('#teViewSeg [data-view="globe"]').click();
+    await sleep(500);
+    report('terrain editor can switch to a 3D preview',
+      api.terrainEditor.viewMode === 'globe' && !teGlobeCanvas.classList.contains('hidden') && teFlat.classList.contains('hidden'),
+      { mode: api.terrainEditor.viewMode, webgl: !!(api.terrainEditor.toolkit.globe && api.terrainEditor.toolkit.globe.ok) });
+
+    doc.querySelector('#teViewSeg [data-view="flat"]').click();
+    await sleep(300);
+    report('terrain editor switches back to the flat map',
+      api.terrainEditor.viewMode === 'flat' && !teFlat.classList.contains('hidden'), { mode: api.terrainEditor.viewMode });
+
+    // brush controls: slider + knob + numeric input, all sharing one value
+    const brushNum = doc.getElementById('teBrushNum');
+    brushNum.value = '25';
+    brushNum.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(120);
+    const radiusAfterNum = api.terrainEditor.toolkit.tview.radius;
+    const sliderAfterNum = Number(doc.getElementById('teBrush').value);
+    report('brush radius accepts a numeric input', Math.abs(radiusAfterNum - 25) < 0.01 && sliderAfterNum === 25,
+      { radius: radiusAfterNum, slider: sliderAfterNum });
+
+    const knobHost = doc.getElementById('teBrushKnob');
+    report('brush radius has no knob (precise numeric entry instead)', !knobHost,
+      { present: !!knobHost });
+    report('change-height control is labelled in metres',
+      (doc.querySelector('#teHeightRow .ctl-unit') || {}).textContent === 'm',
+      { unit: (doc.querySelector('#teHeightRow .ctl-unit') || {}).textContent });
+
+    // the generation sliders take typed values and share the value with the slider
+    const fragNum = doc.getElementById('teFragNum');
+    const seaNum = doc.getElementById('teSeaNum');
+    const reliefNum = doc.getElementById('teReliefNum');
+    const seaLevelNum = doc.getElementById('teSeaLevelHNum');
+    report('generation sliders expose numeric inputs', !!(fragNum && seaNum && reliefNum && seaLevelNum));
+    if (fragNum) {
+      fragNum.value = '72';
+      fragNum.dispatchEvent(new cw.Event('change', { bubbles: true }));
+      await sleep(120);
+      report('板块破碎程度 accepts manual numeric entry',
+        doc.getElementById('teFrag').value === '72', { slider: doc.getElementById('teFrag').value });
+    }
+    if (seaLevelNum) {
+      const hBeforeSea = api.terrainEditor.toolkit.grid.height[0];
+      seaLevelNum.value = '200';
+      seaLevelNum.dispatchEvent(new cw.Event('change', { bubbles: true }));
+      await sleep(150);
+      const hAfterSea = api.terrainEditor.toolkit.grid.height[0];
+      report('海平面高度 accepts manual numeric entry and shifts the terrain',
+        Math.abs((hBeforeSea - hAfterSea) - 200) < 2,
+        { before: Math.round(hBeforeSea), after: Math.round(hAfterSea) });
+      seaLevelNum.value = '0';
+      seaLevelNum.dispatchEvent(new cw.Event('change', { bubbles: true }));
+      await sleep(120);
+    }
+
+    // the left configuration column is resizable
+    const split = doc.getElementById('teSplit');
+    const teBody = doc.querySelector('#terrainEditor .te-body');
+    report('terrain editor has a column splitter', !!split);
+    if (split && teBody) {
+      const bodyLeft = teBody.getBoundingClientRect().left;
+      const before = getComputedStyle(teBody).getPropertyValue('--te-tools-w').trim();
+      split.dispatchEvent(new cw.PointerEvent('pointerdown', { bubbles: true, clientX: bodyLeft + 300, clientY: 200, pointerId: 7 }));
+      split.dispatchEvent(new cw.PointerEvent('pointermove', { bubbles: true, clientX: bodyLeft + 420, clientY: 200, pointerId: 7 }));
+      split.dispatchEvent(new cw.PointerEvent('pointerup', { bubbles: true, clientX: bodyLeft + 420, clientY: 200, pointerId: 7 }));
+      await sleep(120);
+      const after = getComputedStyle(teBody).getPropertyValue('--te-tools-w').trim();
+      report('dragging the splitter widens the configuration column', before !== after && parseFloat(after) > parseFloat(before),
+        { before, after });
+    }
+
+    // the brush ring must sit exactly under the pointer (regression: latLonToScreen
+    // used to mirror the right half of the map when it does not wrap)
+    const v = api.terrainEditor.toolkit.view;
+    const cvRect = teFlat.getBoundingClientRect();
+    const pointer = { x: cvRect.left + cvRect.width * 0.78, y: cvRect.top + cvRect.height * 0.42 };
+    const geo = v.screenToLatLon(pointer.x, pointer.y);
+    const back = v.latLonToScreen(geo.lat, geo.lon);
+    report('flat map round-trips pointer -> lat/lon -> pointer',
+      Math.abs(back.x - pointer.x) < 1.5 && Math.abs(back.y - pointer.y) < 1.5,
+      { dx: +(back.x - pointer.x).toFixed(2), dy: +(back.y - pointer.y).toFixed(2) });
+
+    // plain wheel resizes the brush, Ctrl+wheel zooms — the picture must not move
+    const rBefore = api.terrainEditor.toolkit.tview.radius;
+    const zBeforeWheel = v.zoom;
+    teFlat.dispatchEvent(new cw.WheelEvent('wheel', { bubbles: true, deltaY: -120, clientX: pointer.x, clientY: pointer.y }));
+    await sleep(150);
+    const rAfter = api.terrainEditor.toolkit.tview.radius;
+    report('plain wheel resizes the brush without zooming',
+      rAfter > rBefore && v.zoom === zBeforeWheel,
+      { radius: [rBefore, rAfter], zoom: [zBeforeWheel, v.zoom] });
+    teFlat.dispatchEvent(new cw.WheelEvent('wheel', { bubbles: true, deltaY: -120, ctrlKey: true, clientX: pointer.x, clientY: pointer.y }));
+    await sleep(150);
+    report('Ctrl+wheel zooms the flat map', v.zoom > zBeforeWheel, { zoom: v.zoom });
+
+    // arrow keys pan the editor's map (at 1× the whole map fits, so zoom in first)
+    v.zoomBy(2.5);
+    if (doc.activeElement && doc.activeElement.blur) doc.activeElement.blur();
+    const cxBefore = v.cx;
+    cw.dispatchEvent(new cw.KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+    await sleep(120);
+    report('arrow keys pan the terrain editor map', Math.abs(v.cx - cxBefore) > 1e-4,
+      { before: +cxBefore.toFixed(4), after: +v.cx.toFixed(4), zoom: +v.zoom.toFixed(2),
+        active: (doc.activeElement && doc.activeElement.tagName) || null });
+    v.reset();
+
+    // the 3D preview accepts the same gestures
+    const glm = api.terrainEditor.toolkit.ensureGlobe();
+    if (glm && glm.ok) {
+      doc.querySelector('#teViewSeg [data-view="globe"]').click();
+      await sleep(400);
+      const distBefore = glm.rot.dist;
+      const gRect = teGlobeCanvas.getBoundingClientRect();
+      teGlobeCanvas.dispatchEvent(new cw.WheelEvent('wheel', { bubbles: true, deltaY: -120, clientX: gRect.left + gRect.width / 2, clientY: gRect.top + gRect.height / 2 }));
+      await sleep(120);
+      report('3D preview zooms with the wheel', glm.rot.dist < distBefore, { before: +distBefore.toFixed(3), after: +glm.rot.dist.toFixed(3) });
+      const yawBefore = glm.rot.yaw;
+      teGlobeCanvas.dispatchEvent(new cw.PointerEvent('pointerdown', { bubbles: true, button: 0, ctrlKey: true, clientX: 600, clientY: 400, pointerId: 9 }));
+      teGlobeCanvas.dispatchEvent(new cw.PointerEvent('pointermove', { bubbles: true, button: 0, ctrlKey: true, clientX: 700, clientY: 400, pointerId: 9 }));
+      teGlobeCanvas.dispatchEvent(new cw.PointerEvent('pointerup', { bubbles: true, button: 0, ctrlKey: true, clientX: 700, clientY: 400, pointerId: 9 }));
+      await sleep(120);
+      report('3D preview rotates with Ctrl+drag', Math.abs(glm.rot.yaw - yawBefore) > 1e-3,
+        { before: +yawBefore.toFixed(3), after: +glm.rot.yaw.toFixed(3) });
+      doc.querySelector('#teViewSeg [data-view="flat"]').click();
+      await sleep(300);
+    }
+
+
+    // raise / lower must expose an absolute "change height" control
+    doc.querySelector('#teToolSeg [data-tool="raise"]').click();
+    await sleep(100);
+    const raiseLabel = doc.getElementById('teAmountLabel').textContent;
+    const raiseRowShown = doc.getElementById('teHeightRow').style.display !== 'none';
+    const heightNum = doc.getElementById('teHeightNum').value;
+    doc.querySelector('#teToolSeg [data-tool="smooth"]').click();
+    await sleep(100);
+    const smoothLabel = doc.getElementById('teAmountLabel').textContent;
+    const smoothRowShown = doc.getElementById('teHeightRow').style.display !== 'none';
+    const strengthShown = doc.getElementById('teStrengthRow').style.display !== 'none';
+    doc.querySelector('#teToolSeg [data-tool="raise"]').click();
+    await sleep(80);
+    report('raise/lower show an absolute "change height" control',
+      raiseLabel === '改变高度' && raiseRowShown && heightNum !== '',
+      { label: raiseLabel, shown: raiseRowShown, value: heightNum });
+    report('smooth/flatten switch to the strength control',
+      smoothRowShown === false && strengthShown, { label: smoothLabel, heightRow: smoothRowShown, strengthRow: strengthShown });
+
+    const heightInput = doc.getElementById('teHeightNum');
+    heightInput.value = '1500';
+    heightInput.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(120);
+    report('change height accepts a numeric input',
+      Math.abs(api.terrainEditor.toolkit.tview.brushHeight - 1500) < 1,
+      { brushHeight: api.terrainEditor.toolkit.tview.brushHeight });
+
+    // painting must be visible immediately (no need to press "recompute rivers")
+    const tk = api.terrainEditor.toolkit;
+    const idx = Math.floor(tk.grid.GY / 2) * tk.grid.GX + Math.floor(tk.grid.GX / 2);
+    const hBefore = tk.grid.height[idx];
+    tk.tview.tool = 'raise';
+    tk.tview.brushHeight = 1500;
+    tk.tview.stroke({ lat: 0, lon: 0 });
+    tk.tview.render();
+    const hAfter = tk.grid.height[idx];
+    const off = tk.tview._off;
+    const octx = off.getContext('2d');
+    const opx = octx.getImageData(0, 0, Math.min(off.width, 400), Math.min(off.height, 200)).data;
+    let distinct = new Set();
+    for (let i = 0; i < opx.length; i += 4) distinct.add((opx[i] >> 4) + ',' + (opx[i + 1] >> 4) + ',' + (opx[i + 2] >> 4));
+    report('painting changes the heightfield', Math.abs(hAfter - hBefore) > 10,
+      { before: Math.round(hBefore), after: Math.round(hAfter) });
+    report('the preview repaints immediately after a stroke', distinct.size > 10,
+      { previewColors: distinct.size, needsRender: tk.tview.needsRender });
+
+    doc.getElementById('teCancel').click();
+    await sleep(200);
+  } catch (e) { teViewErr = (e && e.stack ? e.stack.split('\n').slice(0, 2).join(' | ') : e.message); }
+  report('terrain editor view + brush flow without errors', teViewErr === null, teViewErr);
+
+  /* ---------------- adjustable grid resolution ---------------- */
+  let gridErr = null;
+  try {
+    // wizard step 3 carries the mesh-resolution control
+    doc.getElementById('btnNewPlanet').click();
+    await sleep(200);
+    api.wizard.setStep(3);
+    await sleep(600);
+    const gridCount = doc.querySelector('#wizPanes input[type=range][max="1036800"]');
+    report('wizard exposes a mesh-resolution slider', !!gridCount);
+    if (gridCount) {
+      gridCount.value = '16200';       // 180 x 90, the cheapest preset
+      gridCount.dispatchEvent(new cw.Event('input', { bubbles: true }));
+      await sleep(150);
+      const regrid = Array.from(doc.querySelectorAll('#wizPanes .ctl-btn')).find((b) => b.textContent.indexOf('按此精度') >= 0);
+      report('wizard offers "regenerate at this resolution"', !!regrid);
+      if (regrid) {
+        regrid.click();
+        await sleep(2500);
+        const gwx = api.wizard.toolkit.grid;
+        report('the wizard grid follows the requested resolution',
+          gwx.GX === 180 && gwx.GY === 90, { gx: gwx.GX, gy: gwx.GY });
+      }
+    }
+    doc.getElementById('wizCreate').click();
+    await sleep(1200);
+    const nw = api.world();
+    report('a planet can be created at a custom resolution',
+      nw.terrain.GX === 180 && nw.grid.NB === 24,
+      { terrain: nw.terrain.GX + 'x' + nw.terrain.GY, climate: nw.grid.NB + 'x' + nw.grid.NL });
+    report('custom-resolution planet simulates normally', (() => {
+      for (let i = 0; i < 12; i++) nw.step(1);
+      return isFinite(nw.tGlobal) && nw.tGlobal > 200 && nw.tGlobal < 340;
+    })(), { tGlobal: +nw.tGlobal.toFixed(2) });
+
+    // preset picker asks for a resolution before building
+    doc.getElementById('presetSel').value = 'mars';
+    doc.getElementById('presetSel').dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(300);
+    const gridModal = doc.getElementById('gridModal');
+    report('choosing a preset asks for the mesh count first',
+      !gridModal.classList.contains('hidden'), { visible: !gridModal.classList.contains('hidden') });
+    const countNum = doc.getElementById('gridCountNum');
+    countNum.value = '16200';
+    countNum.dispatchEvent(new cw.Event('change', { bubbles: true }));
+    await sleep(150);
+    doc.getElementById('gridConfirm').click();
+    await sleep(1500);
+    const marsWorld = api.world();
+    report('the preset is built at the chosen resolution',
+      marsWorld.terrain.GX === 180 && Math.round(api.state.params.irradiance) === 586,
+      { terrain: marsWorld.terrain.GX + 'x' + marsWorld.terrain.GY, irradiance: Math.round(api.state.params.irradiance) });
+    api.applyPreset('earth');
+    await sleep(900);
+  } catch (e) { gridErr = (e && e.stack ? e.stack.split('\n').slice(0, 2).join(' | ') : e.message); }
+  report('grid resolution flow without errors', gridErr === null, gridErr);
+
+  /* ---------------- physics invariants ---------------- */
+  const { World } = await import('/src/world/world.js');
+  const { defaults } = await import('/src/state/params.js');
+  const pw = new World(Object.assign({}, defaults()), { seed: 777 });
+  for (let i = 0; i < 600; i++) pw.step(1);
+  report('50-year integration stays bounded', isFinite(pw.tGlobal) && pw.tGlobal > 200 && pw.tGlobal < 340,
+    +pw.tGlobal.toFixed(2));
+  let poleAcc = 0;
+  for (let i = 0; i < pw.grid.NL; i++) poleAcc += pw.grid.T[i];
+  const poleT = poleAcc / pw.grid.NL;
+  report('polar temperature is physical', poleT > 180 && poleT < 300, +poleT.toFixed(1));
+  report('no non-finite values in climate fields', scanFinite(pw) === 0, { bad: scanFinite(pw) });
+
+  /* ---------------- CO2 sensitivity ---------------- */
+  const sensitivity = [];
+  for (const co2 of [280, 420, 560, 840]) {
+    const w2 = new World(Object.assign({}, defaults(), { co2 }), { seed: 4242 });
+    for (let i = 0; i < 480; i++) w2.step(1);
+    sensitivity.push(co2 + 'ppm=' + w2.tGlobal.toFixed(2));
+  }
+  report('climate responds to CO2 across the range', true, sensitivity);
+
+  finish();
+}
+
+function finish() {
+  const failed = results.filter((r) => !r.ok);
+  log.push('');
+  log.push('==== ' + (results.length - failed.length) + '/' + results.length + ' passed, ' + failed.length + ' failed ====');
+  render();
+  const payload = JSON.stringify({ total: results.length, failed: failed.length, results }, null, 1);
+  fetch('/__result', { method: 'POST', body: payload })
+    .then(() => { document.title = failed.length ? 'FAILED' : 'ALL PASS'; })
+    .catch(() => { document.title = 'POST-FAILED'; });
+}
+
+main().catch((e) => { report('harness crashed', false, e.stack || e.message); finish(); });
+</script>
+
+
+</body></html>

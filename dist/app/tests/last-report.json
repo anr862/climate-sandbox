@@ -1,0 +1,1392 @@
+{
+ "total": 174,
+ "failed": 0,
+ "results": [
+  {
+   "name": "app boots (window.__pcs present)",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "index.html contains every required element",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "parameter panel built every row",
+   "ok": true,
+   "detail": {
+    "rows": 61,
+    "locks": 61
+   }
+  },
+  {
+   "name": "slider widgets present",
+   "ok": true,
+   "detail": {
+    "sliders": 52
+   }
+  },
+  {
+   "name": "layer strip has 16 data layers plus none",
+   "ok": true,
+   "detail": {
+    "count": 17
+   }
+  },
+  {
+   "name": "风场 / 洋流 layers are present",
+   "ok": true,
+   "detail": [
+    "风场",
+    "洋流"
+   ]
+  },
+  {
+   "name": "data panel built metric cards",
+   "ok": true,
+   "detail": {
+    "cards": 7
+   }
+  },
+  {
+   "name": "data panel built charts",
+   "ok": true,
+   "detail": {
+    "charts": 7
+   }
+  },
+  {
+   "name": "the 12-month mean has its own card",
+   "ok": true,
+   "detail": [
+    "平均地表温度",
+    "平均地表温度（12 月均值）",
+    "CO₂ 浓度",
+    "海平面",
+    "冰盖面积",
+    "能量收支（净）",
+    "生物量（相对地球）"
+   ]
+  },
+  {
+   "name": "WebGL context created",
+   "ok": true,
+   "detail": "ok"
+  },
+  {
+   "name": "globe.project returns an on-canvas point",
+   "ok": true,
+   "detail": {
+    "x": 968,
+    "y": 217
+   }
+  },
+  {
+   "name": "globe.pick round-trips a screen point",
+   "ok": true,
+   "detail": {
+    "lat": 70.5,
+    "lon": -58.5
+   }
+  },
+  {
+   "name": "globe renders a lit sphere",
+   "ok": true,
+   "detail": {
+    "lit": 839647,
+    "coverage": 0.848,
+    "meanLum": 90.6,
+    "maxLum": 521,
+    "colors": 155
+   }
+  },
+  {
+   "name": "globe texture has many distinct colours",
+   "ok": true,
+   "detail": {
+    "colors": 155
+   }
+  },
+  {
+   "name": "every data layer changes the rendered image",
+   "ok": true,
+   "detail": {
+    "temperature": 155,
+    "precipitation": 48,
+    "vegetation": 69,
+    "habitability": 121,
+    "oxygen": 65
+   }
+  },
+  {
+   "name": "animation loop is running",
+   "ok": true,
+   "detail": {
+    "frames": 0,
+    "monthsByClock": 0
+   }
+  },
+  {
+   "name": "clock advances the simulation",
+   "ok": true,
+   "detail": {
+    "months": 576,
+    "tGlobal": 290.51
+   }
+  },
+  {
+   "name": "time series is sampled",
+   "ok": true,
+   "detail": {
+    "samples": 583
+   }
+  },
+  {
+   "name": "mean surface temperature is physical",
+   "ok": true,
+   "detail": 290.51
+  },
+  {
+   "name": "planetary albedo is physical",
+   "ok": true,
+   "detail": 0.2687
+  },
+  {
+   "name": "energy budget closes",
+   "ok": true,
+   "detail": -0.175
+  },
+  {
+   "name": "sea level change is plausible",
+   "ok": true,
+   "detail": -0.23
+  },
+  {
+   "name": "all 14 data layers compute finite values",
+   "ok": true,
+   "detail": {
+    "temperature": "-30.00..40.00",
+    "precipitation": "0.00..500.00",
+    "precipSeason": "0.00..1500.00",
+    "humidity": "0.00..100.00",
+    "vegetation": "0.00..100.00",
+    "oxygen": "0.00..40.00",
+    "habitability": "0.00..1.00",
+    "toxicity": "0.00..1.00",
+    "aerosol": "0.00..1.00",
+    "diurnal": "0.00..50.00",
+    "seasonal": "0.00..100.00",
+    "rivers": "0.00..1.00",
+    "seaIce": "0.00..100.00",
+    "anomaly": "-12.00..12.00"
+   }
+  },
+  {
+   "name": "probe read-out is complete",
+   "ok": true,
+   "detail": {
+    "t": 295.3,
+    "biome": "热带海"
+   }
+  },
+  {
+   "name": "clicking the globe creates a probe region",
+   "ok": true,
+   "detail": {
+    "lat": 74.9,
+    "lon": -52.4
+   }
+  },
+  {
+   "name": "probe card shows local climate",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "charts switch to the region scope",
+   "ok": true,
+   "detail": "74.9°, -52.4° · 半径 6°"
+  },
+  {
+   "name": "region can be cleared",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "chart canvases are rendered",
+   "ok": true,
+   "detail": {
+    "total": 7,
+    "painted": 7
+   }
+  },
+  {
+   "name": "metric cards all show a value",
+   "ok": true,
+   "detail": [
+    "-0.35 °C",
+    "— °C",
+    "420 ppm",
+    "-0.2 m",
+    "9.0 %",
+    "-184.082 W/m²",
+    "0.085"
+   ]
+  },
+  {
+   "name": "raising CO2 warms the planet",
+   "ok": true,
+   "detail": {
+    "before": 290.51,
+    "after": 297.57
+   }
+  },
+  {
+   "name": "undo restores a parameter",
+   "ok": true,
+   "detail": {
+    "from": 1361,
+    "set": 1481,
+    "undone": 1361
+   }
+  },
+  {
+   "name": "redo re-applies a parameter",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "lock button toggles a parameter lock",
+   "ok": true,
+   "detail": {
+    "locks": 1
+   }
+  },
+  {
+   "name": "lock can be released",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "every tested preset builds a valid world",
+   "ok": true,
+   "detail": {
+    "mars": 158.4,
+    "venus": 344.8,
+    "snowball": 243.4,
+    "archipelago": 292.1,
+    "ice-moon": 126.7
+   }
+  },
+  {
+   "name": "preset roster is complete",
+   "ok": true,
+   "detail": 13
+  },
+  {
+   "name": "wizard opens",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "wizard steps render parameter fields",
+   "ok": true,
+   "detail": {
+    "fields": 16
+   }
+  },
+  {
+   "name": "wizard has a terrain canvas",
+   "ok": true,
+   "detail": {
+    "step": 3,
+    "toolkit": true,
+    "w": 960,
+    "h": 480
+   }
+  },
+  {
+   "name": "terrain brush edits the height field",
+   "ok": true,
+   "detail": {
+    "gx": 360,
+    "gy": 180,
+    "idx": 32580,
+    "lat": -0.5,
+    "lon": 0.5,
+    "radius": 12,
+    "strength": 1,
+    "limits": {
+     "radius": 1560,
+     "gravity": 1.31,
+     "minElevation": -13000,
+     "maxElevation": 13000
+    },
+    "sameGrid": true,
+    "before": -16517,
+    "after": -13000,
+    "rivers": 681
+   }
+  },
+  {
+   "name": "river routing produces channels",
+   "ok": true,
+   "detail": {
+    "cells": 681
+   }
+  },
+  {
+   "name": "manual mode still offers terrain tools",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "wizard walkthrough without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "wizard creates a fresh planet",
+   "ok": true,
+   "detail": {
+    "name": "新世界",
+    "cells": 64800
+   }
+  },
+  {
+   "name": "terrain editor opens",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "terrain editor applies changes to the world",
+   "ok": true,
+   "detail": {
+    "before": "d2bbb20d",
+    "after": "38c4cb4e",
+    "cells": 64800
+   }
+  },
+  {
+   "name": "terrain editor flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "scrubbing seeks the world back in time",
+   "ok": true,
+   "detail": {
+    "month": 0,
+    "history": 56
+   }
+  },
+  {
+   "name": "returning to live restores the newest month",
+   "ok": true,
+   "detail": 120
+  },
+  {
+   "name": "timeline scrubbing without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "creating a branch adds a parallel timeline",
+   "ok": true,
+   "detail": {
+    "before": 1,
+    "after": 2,
+    "options": 2
+   }
+  },
+  {
+   "name": "switching between branches works",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "branch flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "save dialog lists eight slots",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "save writes a slot to localStorage",
+   "ok": true,
+   "detail": {
+    "slots": 1
+   }
+  },
+  {
+   "name": "loading a slot restores the saved scene",
+   "ok": true,
+   "detail": {
+    "co2": 100
+   }
+  },
+  {
+   "name": "save/load flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "scene round-trips through JSON",
+   "ok": true,
+   "detail": {
+    "bytes": 2614929,
+    "version": 1
+   }
+  },
+  {
+   "name": "scene serialisation without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "unit switch changes the displayed temperature",
+   "ok": true,
+   "detail": {
+    "initial": "17.29 °C",
+    "system0": "metric",
+    "afterKelvinEvent": {
+     "text": "290.44 K",
+     "system": "kelvin"
+    },
+    "afterDirectCall": {
+     "text": "290.44 K",
+     "system": "kelvin"
+    },
+    "backToMetric": {
+     "text": "17.29 °C",
+     "system": "metric"
+    }
+   }
+  },
+  {
+   "name": "every export path produces output",
+   "ok": true,
+   "detail": {
+    "_size": 2614941,
+    "_type": "application/json",
+    "series": "11441B",
+    "grid": "8368034B",
+    "params": "2673B",
+    "scene": "2614941B",
+    "png": "2614941B"
+   }
+  },
+  {
+   "name": "view presets orient the globe north / south / equator",
+   "ok": true,
+   "detail": {
+    "north": 0,
+    "south": 3.142,
+    "equator": -1.571
+   }
+  },
+  {
+   "name": "赤道 / 北极 / 南极 centre exactly what they name",
+   "ok": true,
+   "detail": {
+    "px": {
+     "north": 0,
+     "south": 0,
+     "equator": 0
+    }
+   }
+  },
+  {
+   "name": "视角 column is split into 3D and 平面",
+   "ok": true,
+   "detail": {
+    "buttons": [
+     "globe",
+     "flat"
+    ]
+   }
+  },
+  {
+   "name": "3D mode offers reset-to equator / north pole / south pole",
+   "ok": true,
+   "detail": {
+    "buttons": [
+     "equator",
+     "northPole",
+     "southPole"
+    ],
+    "hidden": false
+   }
+  },
+  {
+   "name": "the reset row drives the globe",
+   "ok": true,
+   "detail": {
+    "pitch": 0,
+    "preset": "northPole"
+   }
+  },
+  {
+   "name": "the reset row hides in flat mode",
+   "ok": true,
+   "detail": {
+    "hidden": true
+   }
+  },
+  {
+   "name": "the reset row returns in 3D mode",
+   "ok": true,
+   "detail": {
+    "hidden": false
+   }
+  },
+  {
+   "name": "flat projection switches the visible canvas",
+   "ok": true,
+   "detail": {
+    "mode": "flat"
+   }
+  },
+  {
+   "name": "flat map renders the terrain",
+   "ok": true,
+   "detail": {
+    "colors": 77,
+    "canvas": "1038x954"
+   }
+  },
+  {
+   "name": "arrow keys pan the flat map",
+   "ok": true,
+   "detail": {
+    "before": 0.5,
+    "after": 0.18
+   }
+  },
+  {
+   "name": "flat map panning wraps horizontally (stays in 0..1)",
+   "ok": true,
+   "detail": {
+    "cx": 0.22
+   }
+  },
+  {
+   "name": "arrow keys shift the latitude band when zoomed in",
+   "ok": true,
+   "detail": {
+    "before": 0.5,
+    "after": 0.5588,
+    "zoom": 2.5
+   }
+  },
+  {
+   "name": "flat map zooms",
+   "ok": true,
+   "detail": {
+    "z0": 1,
+    "z1": 2
+   }
+  },
+  {
+   "name": "switching back to 3D restores the globe canvas",
+   "ok": true,
+   "detail": {
+    "mode": "globe"
+   }
+  },
+  {
+   "name": "view preset + flat map flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "shadow toggle removes the dark hemisphere",
+   "ok": true,
+   "detail": {
+    "withShadow": {
+     "mean": 34.49,
+     "darkFraction": 0.254
+    },
+    "withoutShadow": {
+     "mean": 101.65,
+     "darkFraction": 0.152
+    }
+   }
+  },
+  {
+   "name": "shadow checkbox drives the globe",
+   "ok": true,
+   "detail": {
+    "afterCheck": true,
+    "final": false
+   }
+  },
+  {
+   "name": "shadow toggle flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "parameter panel has the 陨石 group",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "the 陨石 group is labelled",
+   "ok": true,
+   "detail": [
+    "恒星与辐照",
+    "轨道与自转",
+    "大气成分",
+    "海洋与冰盖",
+    "反照率",
+    "地形",
+    "温室效应",
+    "洋流与大气环流",
+    "地表与渲染",
+    "陨石",
+    "时间与模拟"
+   ]
+  },
+  {
+   "name": "a meteor shower fires at the chosen month and injects dust",
+   "ok": true,
+   "detail": {
+    "enabled": true,
+    "at": 62,
+    "month": 63,
+    "impact": {
+     "count": 4,
+     "total": "3.42e+15",
+     "load": 1.105,
+     "dust": 1.099
+    }
+   }
+  },
+  {
+   "name": "the shower perturbs the climate",
+   "ok": true,
+   "detail": {
+    "heat": 471.5,
+    "masses": [
+     880000000000000,
+     740000000000000,
+     770000000000000,
+     1000000000000000
+    ]
+   }
+  },
+  {
+   "name": "each meteor lands at its own random site",
+   "ok": true,
+   "detail": {
+    "sites": 4,
+    "distinct": 4,
+    "latSpread": 43.6,
+    "coords": [
+     "-13.8,-47.7",
+     "4.5,-100.2",
+     "-39.2,-121.7",
+     "-6.3,-10.2"
+    ]
+   }
+  },
+  {
+   "name": "meteors are drawn over the whole sphere, poles included",
+   "ok": true,
+   "detail": [
+    -13.8,
+    4.5,
+    -39.2,
+    -6.3
+   ]
+  },
+  {
+   "name": "the impact survives a snapshot round-trip",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "the impact reports a blast footprint for the animation",
+   "ok": true,
+   "detail": {
+    "radiusDeg": 2.73,
+    "blastKm": 303
+   }
+  },
+  {
+   "name": "the impact starts the on-globe animation",
+   "ok": true,
+   "detail": {
+    "lat": -6.29,
+    "lon": -10.24,
+    "radiusDeg": 2.73
+   }
+  },
+  {
+   "name": "the impact animation renders without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "the impact dust reservoir decays over a couple of years",
+   "ok": true,
+   "detail": {
+    "massStart": "3.30e+15",
+    "massEnd": "1.33e+15",
+    "retained": 0.403,
+    "loadStart": 1.099,
+    "loadAfter2yr": 0.976
+   }
+  },
+  {
+   "name": "clearing the impacts clears the dust",
+   "ok": true,
+   "detail": {
+    "dust": 0
+   }
+  },
+  {
+   "name": "a bombardment window spreads the impacts over time",
+   "ok": true,
+   "detail": {
+    "total": 12,
+    "distinctMonths": 11,
+    "first": 6,
+    "last": 18,
+    "firedByMonth": [
+     0,
+     0,
+     4,
+     7,
+     11
+    ]
+   }
+  },
+  {
+   "name": "a bombardment accumulates dust from every impact",
+   "ok": true,
+   "detail": {
+    "dust": 1.231
+   }
+  },
+  {
+   "name": "every meteor of a long bombardment still has its own site",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "meteor flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "habitability is zero over the ocean",
+   "ok": true,
+   "detail": {
+    "oceanCells": 3309,
+    "oceanMax": 0
+   }
+  },
+  {
+   "name": "habitability is a meaningful land index",
+   "ok": true,
+   "detail": {
+    "landCells": 1299,
+    "landMean": 0.546
+   }
+  },
+  {
+   "name": "the 宜居度 layer is blank over water",
+   "ok": true,
+   "detail": {
+    "value": 0
+   }
+  },
+  {
+   "name": "river proximity raises habitability",
+   "ok": true,
+   "detail": {
+    "nearRiver": 0.57,
+    "away": 0.537
+   }
+  },
+  {
+   "name": "terrain drives the wind field (orographic lift)",
+   "ok": true,
+   "detail": {
+    "maxLift": 34.32
+   }
+  },
+  {
+   "name": "the wind field drives the ocean currents",
+   "ok": true,
+   "detail": {
+    "withWind": 0.25,
+    "withoutWind": 0.245
+   }
+  },
+  {
+   "name": "habitability + terrain-flow flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "风场 layer shows a vector overlay",
+   "ok": true,
+   "detail": {
+    "visible": true,
+    "arrows": 392,
+    "skip": null,
+    "overlay": "windSpeed",
+    "canvas": true
+   }
+  },
+  {
+   "name": "vector overlay actually paints arrows",
+   "ok": true,
+   "detail": {
+    "painted": 827
+   }
+  },
+  {
+   "name": "legend marks the vector layers",
+   "ok": true,
+   "detail": "0.0 m/s  ←  →  50.0 m/s（箭头方向 = 流向 / 风向）"
+  },
+  {
+   "name": "洋流 layer shows a vector overlay",
+   "ok": true,
+   "detail": {
+    "arrows": 358
+   }
+  },
+  {
+   "name": "flat map also draws the flow field",
+   "ok": true,
+   "detail": {
+    "arrows": 300,
+    "painted": 561
+   }
+  },
+  {
+   "name": "scalar layers hide the vector overlay",
+   "ok": true,
+   "detail": {
+    "hidden": true,
+    "arrows": 0,
+    "skip": "not-a-vector-layer"
+   }
+  },
+  {
+   "name": "legend editor starts closed",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "clicking the colourbar opens the legend editor",
+   "ok": true,
+   "detail": {
+    "hidden": false
+   }
+  },
+  {
+   "name": "legend editor offers ten colourbars",
+   "ok": true,
+   "detail": {
+    "count": 10
+   }
+  },
+  {
+   "name": "choosing a colourbar updates the legend gradient",
+   "ok": true,
+   "detail": {
+    "chosen": "slate",
+    "changed": true
+   }
+  },
+  {
+   "name": "choosing a colourbar re-colours the globe itself",
+   "ok": true,
+   "detail": {
+    "before": 109.43,
+    "after": 107.8,
+    "ramp": "clay"
+   }
+  },
+  {
+   "name": "choosing a colourbar re-colours the flat-map image too",
+   "ok": true,
+   "detail": {
+    "before": 3196654144,
+    "after": 3066576912
+   }
+  },
+  {
+   "name": "the colourbar range can be typed in manually",
+   "ok": true,
+   "detail": {
+    "range": {
+     "min": -12,
+     "max": 44
+    },
+    "ticks": "-12.0 °C  ←  →  44.0 °C",
+    "fields": {
+     "min": "-12",
+     "max": "44"
+    },
+    "defaultsBefore": {
+     "min": "-30",
+     "max": "40"
+    }
+   }
+  },
+  {
+   "name": "the manual range reaches the renderer",
+   "ok": true,
+   "detail": {
+    "min": -12,
+    "max": 44,
+    "custom": true
+   }
+  },
+  {
+   "name": "\"自适应范围\" switches the layer back to auto-scaling",
+   "ok": true,
+   "detail": {
+    "min": -30,
+    "max": 40
+   }
+  },
+  {
+   "name": "\"恢复默认\" restores the registered default range",
+   "ok": true,
+   "detail": {
+    "auto": false,
+    "range": null,
+    "applied": {
+     "min": -30,
+     "max": 40
+    }
+   }
+  },
+  {
+   "name": "legend editor closes again",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "the custom colourbar editor opens",
+   "ok": true,
+   "detail": {
+    "hidden": false
+   }
+  },
+  {
+   "name": "clicking the bar inserts a colour stop",
+   "ok": true,
+   "detail": {
+    "before": 5,
+    "after": 6,
+    "stops": [
+     0,
+     0.25,
+     0.32,
+     0.5,
+     0.75,
+     1
+    ]
+   }
+  },
+  {
+   "name": "the inserted stop lands where it was clicked",
+   "ok": true,
+   "detail": [
+    0,
+    0.25,
+    0.32,
+    0.5,
+    0.75,
+    1
+   ]
+  },
+  {
+   "name": "the editor has a colour palette",
+   "ok": true,
+   "detail": {
+    "count": 24
+   }
+  },
+  {
+   "name": "picking a palette colour paints the selected stop",
+   "ok": true,
+   "detail": {
+    "color": "#3f4f78",
+    "stops": [
+     "#3f4f78",
+     "#57809c",
+     "#3f4f78",
+     "#9eac86",
+     "#bb7f62",
+     "#8c4b56"
+    ]
+   }
+  },
+  {
+   "name": "the editor can switch to a stepped colourbar",
+   "ok": true,
+   "detail": {
+    "mode": "stepped"
+   }
+  },
+  {
+   "name": "applying stores the custom colourbar for the layer",
+   "ok": true,
+   "detail": {
+    "mode": "stepped",
+    "stops": 6
+   }
+  },
+  {
+   "name": "the legend marks the layer as custom and draws the new ramp",
+   "ok": true,
+   "detail": {
+    "active": [
+     "自定义"
+    ]
+   }
+  },
+  {
+   "name": "恢复默认 clears the custom colourbar too",
+   "ok": true,
+   "detail": {
+    "custom": null
+   }
+  },
+  {
+   "name": "a preset colourbar can still be chosen after using the custom editor",
+   "ok": true,
+   "detail": {
+    "ramp": "slate"
+   }
+  },
+  {
+   "name": "every colourbar uses the requested default range",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "vector + legend flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "terrain editor can switch to a 3D preview",
+   "ok": true,
+   "detail": {
+    "mode": "globe",
+    "webgl": true
+   }
+  },
+  {
+   "name": "terrain editor switches back to the flat map",
+   "ok": true,
+   "detail": {
+    "mode": "flat"
+   }
+  },
+  {
+   "name": "brush radius accepts a numeric input",
+   "ok": true,
+   "detail": {
+    "radius": 25,
+    "slider": 25
+   }
+  },
+  {
+   "name": "brush radius has no knob (precise numeric entry instead)",
+   "ok": true,
+   "detail": {
+    "present": false
+   }
+  },
+  {
+   "name": "change-height control is labelled in metres",
+   "ok": true,
+   "detail": {
+    "unit": "m"
+   }
+  },
+  {
+   "name": "generation sliders expose numeric inputs",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "板块破碎程度 accepts manual numeric entry",
+   "ok": true,
+   "detail": {
+    "slider": "72"
+   }
+  },
+  {
+   "name": "海平面高度 accepts manual numeric entry and shifts the terrain",
+   "ok": true,
+   "detail": {
+    "before": -12191,
+    "after": -12391
+   }
+  },
+  {
+   "name": "terrain editor has a column splitter",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "dragging the splitter widens the configuration column",
+   "ok": true,
+   "detail": {
+    "before": "300px",
+    "after": "420px"
+   }
+  },
+  {
+   "name": "flat map round-trips pointer -> lat/lon -> pointer",
+   "ok": true,
+   "detail": {
+    "dx": 0,
+    "dy": 0
+   }
+  },
+  {
+   "name": "plain wheel resizes the brush without zooming",
+   "ok": true,
+   "detail": {
+    "radius": [
+     25,
+     27.500000000000004
+    ],
+    "zoom": [
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "name": "Ctrl+wheel zooms the flat map",
+   "ok": true,
+   "detail": {
+    "zoom": 1.18
+   }
+  },
+  {
+   "name": "arrow keys pan the terrain editor map",
+   "ok": true,
+   "detail": {
+    "before": 0.5427,
+    "after": 0.5156,
+    "zoom": 2.95,
+    "active": "BODY"
+   }
+  },
+  {
+   "name": "3D preview zooms with the wheel",
+   "ok": true,
+   "detail": {
+    "before": 3,
+    "after": 2.775
+   }
+  },
+  {
+   "name": "3D preview rotates with Ctrl+drag",
+   "ok": true,
+   "detail": {
+    "before": -0.55,
+    "after": 0.2
+   }
+  },
+  {
+   "name": "raise/lower show an absolute \"change height\" control",
+   "ok": true,
+   "detail": {
+    "label": "改变高度",
+    "shown": true,
+    "value": "600"
+   }
+  },
+  {
+   "name": "smooth/flatten switch to the strength control",
+   "ok": true,
+   "detail": {
+    "label": "强度参数",
+    "heightRow": false,
+    "strengthRow": true
+   }
+  },
+  {
+   "name": "the hover height read-out is in the markup and starts hidden",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "hovering with Ctrl shows the height at that exact point",
+   "ok": true,
+   "detail": {
+    "hiddenWithoutCtrl": true,
+    "text": "+641 m陆上高度21.7°, -28.9°",
+    "value": 641
+   }
+  },
+  {
+   "name": "the hovered height matches the terrain under the cursor",
+   "ok": true,
+   "detail": {
+    "shown": 641,
+    "expected": 641
+   }
+  },
+  {
+   "name": "releasing Ctrl hides the hover read-out again",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "change height accepts a numeric input",
+   "ok": true,
+   "detail": {
+    "brushHeight": 1500
+   }
+  },
+  {
+   "name": "painting changes the heightfield",
+   "ok": true,
+   "detail": {
+    "before": -195,
+    "after": 704
+   }
+  },
+  {
+   "name": "the preview repaints immediately after a stroke",
+   "ok": true,
+   "detail": {
+    "previewColors": 72,
+    "needsRender": false
+   }
+  },
+  {
+   "name": "terrain editor view + brush flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "wizard exposes a mesh-resolution slider",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "wizard offers \"regenerate at this resolution\"",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "the wizard grid follows the requested resolution",
+   "ok": true,
+   "detail": {
+    "gx": 180,
+    "gy": 90
+   }
+  },
+  {
+   "name": "a planet can be created at a custom resolution",
+   "ok": true,
+   "detail": {
+    "terrain": "180x90",
+    "climate": "24x48"
+   }
+  },
+  {
+   "name": "custom-resolution planet simulates normally",
+   "ok": true,
+   "detail": {
+    "tGlobal": 289.5
+   }
+  },
+  {
+   "name": "choosing a preset asks for the mesh count first",
+   "ok": true,
+   "detail": {
+    "visible": true
+   }
+  },
+  {
+   "name": "the preset is built at the chosen resolution",
+   "ok": true,
+   "detail": {
+    "terrain": "180x90",
+    "irradiance": 586
+   }
+  },
+  {
+   "name": "grid resolution flow without errors",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "name": "50-year integration stays bounded",
+   "ok": true,
+   "detail": 290.45
+  },
+  {
+   "name": "Earth default settles at an Earth-like 12-month mean",
+   "ok": true,
+   "detail": 287.98
+  },
+  {
+   "name": "year 1 is already near equilibrium, not plunging",
+   "ok": true,
+   "detail": {
+    "year1": 286.88,
+    "year60": 287.98
+   }
+  },
+  {
+   "name": "Earth default is a fixed point, not a slow slide",
+   "ok": true,
+   "detail": {
+    "year40": 288.097,
+    "year60": 287.976
+   }
+  },
+  {
+   "name": "meridional transport conserves area-weighted heat",
+   "ok": true,
+   "detail": "1.74e-14"
+  },
+  {
+   "name": "polar temperature is physical",
+   "ok": true,
+   "detail": 260.4
+  },
+  {
+   "name": "no non-finite values in climate fields",
+   "ok": true,
+   "detail": {
+    "bad": 0
+   }
+  },
+  {
+   "name": "climate responds to CO2 across the range",
+   "ok": true,
+   "detail": [
+    "280ppm=283.98",
+    "420ppm=286.78",
+    "560ppm=288.05",
+    "840ppm=290.04"
+   ]
+  }
+ ]
+}

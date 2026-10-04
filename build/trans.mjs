@@ -1,0 +1,12 @@
+import { makeGrid, transportAirStep } from "../src/physics/climate.js";
+const g = makeGrid(48, 96);
+for (let j = 0; j < g.NB; j++) g.airT[j] = 300 - 60 * Math.sin((g.lats[j] * Math.PI) / 180) ** 2;
+const before = Array.from(g.airT);
+const w = (a) => { let s = 0; for (let j = 0; j < g.NB; j++) s += a[j] * g.cosLat[j]; return s; };
+const u = (a) => { let s = 0; for (let j = 0; j < g.NB; j++) s += a[j]; return s; };
+console.log("cosLat 0/24/47:", g.cosLat[0].toFixed(3), g.cosLat[24].toFixed(3), g.cosLat[47].toFixed(3));
+console.log("weighted before", w(before).toFixed(5), "unweighted before", u(before).toFixed(5));
+transportAirStep(g, { transport: 1, atmosphericCirculation: 1 }, 7.6 * 86400);
+console.log("weighted after ", w(g.airT).toFixed(5), "unweighted after ", u(g.airT).toFixed(5));
+console.log("weighted drift", (w(g.airT) - w(before)).toExponential(3), "unweighted drift", (u(g.airT) - u(before)).toExponential(3));
+console.log("profile:", before.filter((_, j) => j % 8 === 0).map((v) => v.toFixed(1)).join(" "), "->", Array.from(g.airT).filter((_, j) => j % 8 === 0).map((v) => v.toFixed(1)).join(" "));

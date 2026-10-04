@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>PROBE-DONE</title></head>
+<body>
+<iframe id="app" src="/index.html" style="width:1500px;height:900px;position:absolute;left:-4000px;top:0;border:0"></iframe>
+<pre id="out">[boot] month=0  tGlobal=288.028  tAnnual=288.028  albedo=0.2392  ice=7.82%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=256.8  Tmax=303.6  snow=0.0847
+[month 12] month=12  tGlobal=284.614  tAnnual=284.061  albedo=0.3375  ice=7.83%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=238.3  Tmax=308.2  snow=0.0876
+[month 60] month=60  tGlobal=282.093  tAnnual=280.369  albedo=0.3551  ice=10.93%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=236.8  Tmax=306.4  snow=0.1070
+[month 120] month=120  tGlobal=279.130  tAnnual=277.467  albedo=0.3800  ice=15.18%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=234.8  Tmax=304.4  snow=0.1226
+[month 240] month=240  tGlobal=270.362  tAnnual=269.030  albedo=0.4442  ice=27.55%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=228.5  Tmax=298.4  snow=0.1617
+[month 360] month=360  tGlobal=216.624  tAnnual=218.948  albedo=0.7028  ice=74.78%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=186.2  Tmax=264.2  snow=0.2819
+[month 480] month=480  tGlobal=211.667  tAnnual=210.688  albedo=0.7070  ice=77.11%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=182.3  Tmax=237.1  snow=0.2819
+[month 576] month=576  tGlobal=211.667  tAnnual=210.688  albedo=0.7070  ice=77.80%  terrain=360x180  climate=96x48
+      irradiance=1361  co2=420  ch4=1920  humidity=78  cloud=68.20  stepMonths=1  tau=(BASE)  presetId=earth  seed=20240
+      Tmin=182.3  Tmax=237.1  snow=0.2819</pre>
+<script type="module">
+const out = document.getElementById('out');
+const lines = [];
+const log = (s) => { lines.push(s); out.textContent = lines.join('\n'); };
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const frame = document.getElementById('app');
+const win = frame.contentWindow;
+
+let pcs = null;
+for (let i = 0; i < 120 && !pcs; i++) { await sleep(150); pcs = win.__pcs; }
+if (!pcs) { log('NO __pcs'); document.title = 'PROBE-FAIL'; throw new Error('no __pcs'); }
+
+const dump = (tag) => {
+  const w = pcs.state.world;
+  const p = pcs.state.params;
+  log(`[${tag}] month=${Math.round(w.time.month)}  tGlobal=${w.tGlobal.toFixed(3)}  ` +
+      `tAnnual=${Number.isFinite(w.tGlobalAnnual) ? w.tGlobalAnnual.toFixed(3) : 'n/a'}  ` +
+      `albedo=${w.albedoGlobal.toFixed(4)}  ice=${(w.iceAreaFrac * 100).toFixed(2)}%  ` +
+      `terrain=${w.terrain.GX}x${w.terrain.GY}  climate=${w.grid.NL}x${w.grid.NB}`);
+  log(`      irradiance=${p.irradiance}  co2=${p.co2}  ch4=${p.ch4}  humidity=${p.humidity}  ` +
+      `cloud=${typeof p.cloud === 'number' ? p.cloud.toFixed(2) : p.cloud}  stepMonths=${p.stepMonths}  ` +
+      `tau=${p.tauRef ?? '(BASE)'}  presetId=${pcs.state.ui.presetId}  seed=${w.seed ?? '(n/a)'}`);
+  log(`      Tmin=${Math.min(...w.grid.T).toFixed(1)}  Tmax=${Math.max(...w.grid.T).toFixed(1)}  ` +
+      `snow=${(w.grid.snowCover.reduce((a, b) => a + b, 0) / w.grid.n).toFixed(4)}`);
+};
+
+dump('boot');
+
+// step through the world exactly the way the app clock does
+const w = pcs.state.world;
+const marks = [12, 60, 120, 240, 360, 480, 576];
+let done = 0;
+for (const m of marks) {
+  while (done < m) { w.step(1, null); done++; }
+  dump(`month ${m}`);
+}
+
+document.title = 'PROBE-DONE';
+</script>
+
+
+</body></html>

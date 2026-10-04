@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>quick</title></head>
+<body>
+<iframe id="app" src="/index.html" style="width:1500px;height:900px;position:absolute;left:-4000px;top:0;border:0"></iframe>
+<pre id="out">running…</pre>
+<script type="module">
+/**
+ * Focused regression page for the three reported UI bugs. Deliberately tiny so it
+ * finishes in seconds — the full harness takes minutes and is easy to hang on.
+ */
+const out = document.getElementById('out');
+const lines = [];
+const log = (s) => { lines.push(s); out.textContent = lines.join('\n'); };
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const results = [];
+function report(name, ok, detail) {
+  results.push({ name, ok });
+  log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail !== undefined ? '  ::  ' + JSON.stringify(detail) : ''}`);
+}
+
+const frameEl = document.getElementById('app');
+const win = frameEl.contentWindow;
+window.addEventListener('error', (e) => log('WINDOW ERROR: ' + e.message));
+window.addEventListener('unhandledrejection', (e) => log('REJECTION: ' + ((e.reason && e.reason.stack) || e.reason)));
+let api = null;
+for (let i = 0; i < 120 && !api; i++) { await sleep(120); api = win.__pcs; }
+if (!api) { log('NO __pcs'); document.title = 'QUICK-FAIL'; throw new Error('no api'); }
+// Re-read the document *after* the iframe has navigated: the reference captured
+// before loading points at the initial about:blank document, where getElementById
+// returns null for everything.
+const doc = frameEl.contentDocument;
+log('api ok; doc has legendBar: ' + !!doc.getElementById('legendBar') +
+    '; terrainEditor: ' + !!doc.getElementById('terrainEditor'));
+const cw = win;
+const frame = () => { try { api.globePane.render(0.016, api.world()); } catch (e) { log('render error: ' + e.message); } };
+
+/* ---------- 1. changing the colourbar must re-colour the map ---------- */
+try {
+  api.globePane.setViewPreset('globe');
+  api.globePane.setOverlay('temperature');
+  await sleep(300);
+  frame();
+  const g = api.globePane.globe;
+  const gl = g.gl;
+  const sample = () => {
+    const w = Math.min(256, g.canvas.width), h = Math.min(256, g.canvas.height);
+    const px = new Uint8Array(w * h * 4);
+    gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, px);
+    let sum = 0, lit = 0;
+    for (let i = 0; i < px.length; i += 4) {
+      const lum = px[i] + px[i + 1] + px[i + 2];
+      if (lum > 90) { lit++; sum += lum; }
+    }
+    return lit ? sum / lit : 0;
+  };
+  const flatHash = () => {
+    const cv = api.globePane.overlayCanvas;
+    if (!cv) return null;
+    const n = Math.min(32, cv.width), m2 = Math.min(32, cv.height);
+    const d = cv.getContext('2d').getImageData(0, 0, n, m2).data;
+    let h = 0; for (let i = 0; i < d.length; i++) h = (h * 31 + d[i]) >>> 0;
+    return h;
+  };
+  const before = sample();
+  const flatBefore = flatHash();
+  doc.getElementById('legendBar').click();
+  await sleep(250);
+  const ramps = doc.querySelectorAll('#legendRamps .le-ramp');
+  log('ramp buttons: ' + ramps.length + ' ; overlayCanvas: ' + !!api.globePane.overlayCanvas);
+  if (ramps.length < 4) throw new Error('legend editor did not offer ramp buttons');
+  ramps[3].click();
+  await sleep(300);
+  frame();
+  const after = sample();
+  const flatAfter = flatHash();
+  report('colourbar choice reaches the globe', Math.abs(after - before) > 0.4,
+    { before: +before.toFixed(2), after: +after.toFixed(2), ramp: api.state.ui.layerRamp.temperature });
+  report('colourbar choice reaches the flat map image',
+    flatBefore !== null && flatAfter !== null && flatBefore !== flatAfter,
+    { before: flatBefore, after: flatAfter });
+  const rangeBefore = sample();
+  const minIn = doc.getElementById('legendMin');
+  const maxIn = doc.getElementById('legendMax');
+  minIn.value = '-8';
+  minIn.dispatchEvent(new cw.Event('change', { bubbles: true }));
+  maxIn.value = '34';
+  maxIn.dispatchEvent(new cw.Event('change', { bubbles: true }));
+  await sleep(300);
+  frame();
+  report('colourbar range still reaches the globe', Math.abs(sample() - rangeBefore) > 0.4,
+    { before: +rangeBefore.toFixed(2), after: +sample().toFixed(2) });
+} catch (e) { report('colourbar section ran', false, String(e && e.message)); }
+
+/* ---------- 2. terrain editor: Ctrl hover shows the height ---------- */
+try {
+  const editBtn = doc.getElementById('btnTerrain');
+  if (editBtn) editBtn.click();
+  await sleep(700);
+  const modal = doc.getElementById('terrainEditor');
+  const canvas = doc.getElementById('teCanvas');
+  const hoverEl = doc.getElementById('teHoverInfo');
+  if (modal.classList.contains('hidden') || !canvas || !hoverEl) {
+    report('terrain editor opened for the hover test', false, { hidden: modal.classList.contains('hidden') });
+  } else {
+    const box = canvas.getBoundingClientRect();
+    const cx = Math.round(box.left + box.width * 0.45);
+    const cy = Math.round(box.top + box.height * 0.4);
+    canvas.dispatchEvent(new cw.PointerEvent('pointermove', { bubbles: true, button: 0, clientX: cx, clientY: cy, pointerId: 31 }));
+    await sleep(150);
+    const hiddenPlain = hoverEl.classList.contains('hidden');
+    win.dispatchEvent(new cw.KeyboardEvent('keydown', { key: 'Control', ctrlKey: true, bubbles: true }));
+    await sleep(200);
+    const text = hoverEl.textContent;
+    const m = /([+-]?[\d,]+)\s*m/.exec(text);
+    const shown = m ? Number(m[1].replace(/,/g, '')) : NaN;
+    let expect = NaN;
+    try {
+      const tk = api.terrainEditor && api.terrainEditor.toolkit;
+      const geo = tk && tk._hoverGeo;
+      if (geo && tk.grid) {
+        const mod = await import('/src/world/terrain.js');
+        expect = Math.round(mod.heightAt(tk.grid, geo.lat, geo.lon) - (tk.grid.waterLevel || 0));
+      }
+    } catch (e) { void e; }
+    report('plain hover does not show a height', hiddenPlain);
+    report('Ctrl + hover shows the height at that point',
+      !hoverEl.classList.contains('hidden') && isFinite(shown),
+      { text: text.slice(0, 64), shown });
+    report('the shown height matches the terrain', isFinite(shown) && isFinite(expect) && Math.abs(shown - expect) <= 1,
+      { shown, expect });
+    win.dispatchEvent(new cw.KeyboardEvent('keyup', { key: 'Control', ctrlKey: false, bubbles: true }));
+    await sleep(200);
+    report('releasing Ctrl hides it again', hoverEl.classList.contains('hidden'));
+  }
+} catch (e) { report('hover section ran', false, String(e && e.message)); }
+
+const failed = results.filter((r) => !r.ok).length;
+log(`\n==== ${results.length - failed}/${results.length} passed, ${failed} failed ====`);
+document.title = failed ? 'QUICK-FAIL' : 'QUICK-ALLPASS';
+</script>
+</body>
+</html>
